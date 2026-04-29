@@ -27,6 +27,13 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        sage: "hsl(var(--sage))",
+        "sage-deep": "hsl(var(--sage-deep))",
+        sky: "hsl(var(--sky))",
+        beige: "hsl(var(--beige))",
+        lotus: "hsl(var(--lotus))",
+        "lotus-deep": "hsl(var(--lotus-deep))",
+        gold: "hsl(var(--gold))",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
