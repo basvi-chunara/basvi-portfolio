@@ -1,61 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Ghibli-inspired soft pastel design system. All colors HSL. */
+/* Ghibli-inspired clean design system. All colors HSL.
+   Cool rain palette → warm sunset palette. */
 
 @layer base {
   :root {
-    --background: 38 45% 96%;          /* warm cream */
-    --foreground: 150 18% 22%;          /* deep sage ink */
+    --background: 210 30% 96%;             /* cool misted white */
+    --foreground: 215 25% 18%;             /* deep slate */
 
-    --card: 40 50% 98%;
-    --card-foreground: 150 18% 22%;
+    --card: 210 30% 98%;
+    --card-foreground: 215 25% 18%;
 
-    --popover: 40 50% 98%;
-    --popover-foreground: 150 18% 22%;
+    --popover: 210 30% 98%;
+    --popover-foreground: 215 25% 18%;
 
-    --primary: 150 25% 45%;             /* sage green */
-    --primary-foreground: 40 50% 98%;
+    --primary: 205 35% 38%;                /* rain blue */
+    --primary-foreground: 210 30% 98%;
 
-    --secondary: 200 45% 82%;           /* sky blue */
-    --secondary-foreground: 200 35% 25%;
+    --secondary: 195 25% 88%;
+    --secondary-foreground: 215 25% 22%;
 
-    --muted: 38 30% 92%;
-    --muted-foreground: 150 10% 40%;
+    --muted: 210 20% 92%;
+    --muted-foreground: 215 12% 42%;
 
-    --accent: 340 55% 80%;              /* lotus pink */
-    --accent-foreground: 340 35% 28%;
+    --accent: 25 70% 62%;                  /* warm sunset */
+    --accent-foreground: 25 40% 18%;
 
-    --gold: 38 70% 62%;                 /* subtle gold */
-    --sage: 150 25% 55%;
-    --sage-deep: 150 30% 32%;
-    --sky: 200 55% 78%;
-    --beige: 38 50% 88%;
-    --lotus: 340 60% 78%;
-    --lotus-deep: 340 45% 55%;
+    --rain-deep: 215 35% 22%;
+    --rain: 205 30% 45%;
+    --mist: 200 25% 80%;
+    --moss: 145 25% 38%;
+    --moss-soft: 145 25% 70%;
+    --lamp: 38 80% 60%;
+    --lamp-soft: 38 90% 78%;
+    --sunset: 22 85% 65%;
+    --sunset-soft: 32 90% 80%;
 
     --destructive: 0 65% 58%;
-    --destructive-foreground: 40 50% 98%;
+    --destructive-foreground: 210 30% 98%;
 
-    --border: 38 25% 86%;
-    --input: 38 25% 86%;
-    --ring: 150 25% 45%;
+    --border: 210 20% 86%;
+    --input: 210 20% 86%;
+    --ring: 205 35% 38%;
 
-    --radius: 1.25rem;
+    --radius: 0.9rem;
 
-    --gradient-sky: linear-gradient(180deg, hsl(200 55% 88%) 0%, hsl(38 55% 94%) 60%, hsl(150 30% 88%) 100%);
-    --gradient-lotus: linear-gradient(135deg, hsl(340 60% 85%) 0%, hsl(38 70% 85%) 100%);
-    --gradient-sage: linear-gradient(135deg, hsl(150 30% 88%) 0%, hsl(200 45% 90%) 100%);
-    --gradient-veil: linear-gradient(180deg, hsl(40 50% 98% / 0) 0%, hsl(40 50% 98% / 0.85) 60%, hsl(40 50% 98%) 100%);
+    --gradient-rain: linear-gradient(180deg, hsl(210 25% 22%) 0%, hsl(205 25% 35%) 100%);
+    --gradient-day: linear-gradient(180deg, hsl(200 35% 88%) 0%, hsl(38 50% 92%) 100%);
+    --gradient-sunset: linear-gradient(180deg, hsl(32 80% 78%) 0%, hsl(18 75% 65%) 100%);
+    --gradient-veil: linear-gradient(180deg, hsl(215 25% 18% / 0.55) 0%, hsl(215 25% 18% / 0.25) 50%, hsl(215 25% 18% / 0.65) 100%);
 
-    --shadow-soft: 0 10px 30px -12px hsl(150 30% 40% / 0.18);
-    --shadow-float: 0 20px 50px -20px hsl(340 40% 50% / 0.22);
-    --shadow-petal: 0 6px 20px -8px hsl(340 50% 60% / 0.35);
+    --shadow-soft: 0 8px 24px -12px hsl(215 30% 20% / 0.18);
+    --shadow-card: 0 1px 2px hsl(215 25% 18% / 0.04), 0 8px 30px -10px hsl(215 25% 18% / 0.12);
+    --shadow-lamp: 0 0 80px hsl(var(--lamp-soft) / 0.7), 0 0 30px hsl(var(--lamp) / 0.6);
 
-    --transition-soft: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-soft: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
@@ -65,83 +68,80 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; }
-  .font-poetic { font-family: 'Caveat', cursive; }
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.015em; }
   .font-display { font-family: 'Fraunces', Georgia, serif; }
 }
 
 @layer utilities {
-  .bg-gradient-sky { background: var(--gradient-sky); }
-  .bg-gradient-lotus { background: var(--gradient-lotus); }
-  .bg-gradient-sage { background: var(--gradient-sage); }
+  .bg-gradient-rain { background: var(--gradient-rain); }
+  .bg-gradient-day { background: var(--gradient-day); }
+  .bg-gradient-sunset { background: var(--gradient-sunset); }
   .bg-gradient-veil { background: var(--gradient-veil); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-float { box-shadow: var(--shadow-float); }
-  .shadow-petal { box-shadow: var(--shadow-petal); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-lamp { box-shadow: var(--shadow-lamp); }
   .transition-soft { transition: var(--transition-soft); }
 
-  .glass-card {
-    background: hsl(40 50% 98% / 0.72);
+  .glass {
+    background: hsl(210 30% 98% / 0.78);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(38 30% 88% / 0.7);
+    border: 1px solid hsl(210 20% 88% / 0.7);
+  }
+  .glass-dark {
+    background: hsl(215 30% 18% / 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsl(210 20% 80% / 0.18);
   }
 
   .text-balance { text-wrap: balance; }
 
-  /* Cursor glow */
   .cursor-glow {
     position: fixed;
     pointer-events: none;
-    width: 320px;
-    height: 320px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
-    background: radial-gradient(circle, hsl(340 70% 80% / 0.28) 0%, hsl(38 70% 85% / 0.15) 35%, transparent 70%);
+    background: radial-gradient(circle, hsl(var(--lamp-soft) / 0.18) 0%, transparent 65%);
     transform: translate(-50%, -50%);
     z-index: 9999;
-    mix-blend-mode: multiply;
     transition: opacity 0.4s ease;
   }
 }
 
-/* Animations */
-@keyframes drift {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-14px) translateX(6px); }
-}
-@keyframes pulse-soft {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px hsl(340 70% 78% / 0.4)); }
-  50% { transform: scale(1.06); filter: drop-shadow(0 0 32px hsl(340 70% 78% / 0.7)); }
-}
-@keyframes float-petal {
-  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% { transform: translateY(110vh) translateX(120px) rotate(360deg); opacity: 0; }
-}
+/* ---------- Animations ---------- */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes zoom-fade-out {
-  to { opacity: 0; transform: scale(1.15); filter: blur(6px); }
+  to { opacity: 0; transform: scale(1.18); filter: blur(8px); }
 }
-@keyframes cloud-drift {
-  from { transform: translateX(-5%); }
-  to { transform: translateX(5%); }
-}
-@keyframes shimmer {
-  0%, 100% { opacity: 0.5; }
+@keyframes lamp-flicker {
+  0%, 100% { opacity: 0.85; }
   50% { opacity: 1; }
 }
+@keyframes lamp-burst {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(2.6); }
+}
+@keyframes rain-fall {
+  0% { transform: translateY(-20vh); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(120vh); opacity: 0.8; }
+}
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
-.animate-drift { animation: drift 6s ease-in-out infinite; }
-.animate-pulse-soft { animation: pulse-soft 3.5s ease-in-out infinite; }
-.animate-fade-up { animation: fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both; }
-.animate-fade-in { animation: fade-in 1.2s ease-out both; }
-.animate-zoom-out { animation: zoom-fade-out 0.9s ease-in forwards; }
-.animate-cloud { animation: cloud-drift 30s ease-in-out infinite alternate; }
-.animate-shimmer { animation: shimmer 2.5s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-fade-in { animation: fade-in 1s ease-out both; }
+.animate-zoom-out { animation: zoom-fade-out 0.95s ease-in forwards; }
+.animate-lamp { animation: lamp-flicker 3.5s ease-in-out infinite; }
+.animate-lamp-burst { animation: lamp-burst 0.85s ease-out forwards; }
+.animate-drift { animation: drift 4s ease-in-out infinite; }
