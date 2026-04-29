@@ -1,6 +1,7 @@
 import { useState } from "react";
-import skyBg from "@/assets/ghibli-sky.jpg";
-import lotusImg from "@/assets/lotus.png";
+import rainyBg from "@/assets/rainy-stop.jpg";
+import lanternImg from "@/assets/lantern.png";
+import Rain from "./Rain";
 
 interface Props { onEnter: () => void; }
 
@@ -8,6 +9,7 @@ const Landing = ({ onEnter }: Props) => {
   const [leaving, setLeaving] = useState(false);
 
   const handleEnter = () => {
+    if (leaving) return;
     setLeaving(true);
     setTimeout(onEnter, 850);
   };
@@ -16,49 +18,65 @@ const Landing = ({ onEnter }: Props) => {
     <div
       className={`fixed inset-0 z-[100] overflow-hidden ${leaving ? "animate-zoom-out" : "animate-fade-in"}`}
     >
-      {/* Sky background */}
+      {/* Background scene */}
       <div
-        className="absolute inset-0 bg-cover bg-center animate-cloud"
-        style={{ backgroundImage: `url(${skyBg})`, transform: "scale(1.08)" }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${rainyBg})` }}
       />
-      {/* Soft veil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/40" />
+      {/* Soft veil for legibility — light, not gloomy */}
+      <div className="absolute inset-0 bg-gradient-to-b from-rain-deep/40 via-rain-deep/15 to-rain-deep/55" />
 
-      {/* Drifting clouds (CSS) */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[18%] left-[-10%] w-72 h-24 rounded-full bg-white/40 blur-2xl animate-cloud" style={{ animationDuration: "40s" }} />
-        <div className="absolute top-[35%] right-[-15%] w-96 h-28 rounded-full bg-white/35 blur-3xl animate-cloud" style={{ animationDuration: "55s", animationDirection: "alternate-reverse" }} />
-      </div>
+      {/* Rain */}
+      <Rain count={140} intensity={0.9} />
 
+      {/* Content */}
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-6 text-center">
-        <p className="font-poetic text-2xl md:text-3xl text-sage-deep/80 mb-3 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          welcome, traveler
+        <p
+          className="text-xs md:text-sm uppercase tracking-[0.3em] text-mist/90 mb-5 animate-fade-up"
+          style={{ animationDelay: "0.2s" }}
+        >
+          Basvi Chunara
         </p>
-        <h1 className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground/90 max-w-3xl text-balance leading-tight animate-fade-up" style={{ animationDelay: "0.5s" }}>
-          Step into my world of <em className="text-lotus-deep not-italic font-medium">data</em>, stories,<br className="hidden md:inline" /> and quiet creation.
+        <h1
+          className="font-display text-3xl md:text-5xl lg:text-6xl text-white max-w-3xl text-balance leading-tight animate-fade-up"
+          style={{ animationDelay: "0.45s" }}
+        >
+          Turning data into useful insights.
         </h1>
-        <p className="mt-6 text-muted-foreground max-w-xl text-balance animate-fade-up" style={{ animationDelay: "0.9s" }}>
-          A portfolio painted in pastels — touch the lotus to begin.
+        <p
+          className="mt-5 text-sm md:text-base text-mist/90 max-w-md animate-fade-up"
+          style={{ animationDelay: "0.7s" }}
+        >
+          Tap the lamp to step inside.
         </p>
 
-        {/* Lotus button */}
+        {/* Lantern button — slightly off-center */}
         <button
           onClick={handleEnter}
-          className="mt-12 group relative animate-fade-up"
-          style={{ animationDelay: "1.2s" }}
           aria-label="Enter portfolio"
+          className="group mt-12 ml-0 md:ml-32 relative animate-fade-up focus:outline-none focus-visible:ring-2 focus-visible:ring-lamp-soft rounded-full"
+          style={{ animationDelay: "1s" }}
         >
-          <div className="absolute inset-0 rounded-full bg-lotus/30 blur-2xl scale-110 animate-pulse-soft" />
-          <img
-            src={lotusImg}
-            alt="A glowing lotus, the entry to the portfolio"
-            width={180}
-            height={180}
-            className="relative w-40 h-40 md:w-48 md:h-48 animate-drift transition-soft group-hover:scale-110 group-active:scale-95"
-            style={{ imageRendering: "auto" }}
+          {/* Glow halo */}
+          <div
+            className={`absolute left-1/2 top-[26%] -translate-x-1/2 w-44 h-44 rounded-full bg-lamp-soft/40 blur-3xl ${
+              leaving ? "animate-lamp-burst" : "animate-lamp"
+            }`}
           />
-          <span className="block mt-4 font-poetic text-xl text-sage-deep/80 group-hover:text-lotus-deep transition-soft">
-            enter
+          <div
+            className={`absolute left-1/2 top-[28%] -translate-x-1/2 w-24 h-24 rounded-full bg-lamp/60 blur-2xl ${
+              leaving ? "animate-lamp-burst" : "animate-lamp"
+            }`}
+          />
+          <img
+            src={lanternImg}
+            alt="A glowing lamp inviting you in"
+            width={220}
+            height={220}
+            className="relative w-40 md:w-48 transition-soft group-hover:scale-[1.04] group-active:scale-95 drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+          />
+          <span className="block mt-3 text-xs uppercase tracking-[0.3em] text-mist/90 group-hover:text-white transition-soft">
+            Enter
           </span>
         </button>
       </div>
