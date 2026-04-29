@@ -1,16 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect, useState } from "react";
+import Landing from "@/components/portfolio/Landing";
+import Portfolio from "@/components/portfolio/Portfolio";
+import CursorGlow from "@/components/portfolio/CursorGlow";
+import Petals from "@/components/portfolio/Petals";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [entered, setEntered] = useState(false);
+
+  useEffect(() => {
+    document.title = "Basvi Chunara · Data Science Portfolio";
+    const desc = "Ghibli-inspired portfolio of Basvi Chunara — Computing Science student crafting calm, considered work in data science, ML and analytics.";
+    let m = document.querySelector('meta[name="description"]');
+    if (!m) { m = document.createElement("meta"); m.setAttribute("name", "description"); document.head.appendChild(m); }
+    m.setAttribute("content", desc);
+    let c = document.querySelector('link[rel="canonical"]');
+    if (!c) { c = document.createElement("link"); c.setAttribute("rel", "canonical"); document.head.appendChild(c); }
+    c.setAttribute("href", window.location.origin + "/");
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <CursorGlow />
+      <Petals count={12} />
+      {!entered && <Landing onEnter={() => setEntered(true)} />}
+      <Portfolio />
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
