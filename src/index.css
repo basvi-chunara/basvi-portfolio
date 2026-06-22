@@ -9,43 +9,42 @@
 
 @layer base {
   :root {
-    --background: 210 30% 96%;             /* cool misted white */
-    --foreground: 215 25% 18%;             /* deep slate */
+    /* Dark, atmospheric portfolio palette. Light beige text on a deep rainy ground. */
+    --background: 220 30% 9%;              /* deep rainy night */
+    --foreground: 38 28% 88%;              /* warm beige-white */
 
-    --card: 210 30% 98%;
-    --card-foreground: 215 25% 18%;
+    --card: 220 25% 14%;
+    --card-foreground: 38 28% 88%;
 
-    --popover: 210 30% 98%;
-    --popover-foreground: 215 25% 18%;
+    --popover: 220 25% 14%;
+    --popover-foreground: 38 28% 88%;
 
-    --primary: 205 35% 38%;                /* rain blue */
-    --primary-foreground: 210 30% 98%;
+    --primary: 38 60% 78%;                 /* warm beige */
+    --primary-foreground: 220 30% 12%;
 
-    --secondary: 195 25% 88%;
-    --secondary-foreground: 215 25% 22%;
+    --secondary: 220 20% 22%;
+    --secondary-foreground: 38 28% 88%;
 
-    --muted: 210 20% 92%;
-    --muted-foreground: 215 12% 42%;
+    --muted: 220 18% 20%;
+    --muted-foreground: 38 15% 72%;
 
-    --accent: 25 70% 62%;                  /* warm sunset */
-    --accent-foreground: 25 40% 18%;
+    --accent: 45 85% 70%;                  /* firefly warm yellow */
+    --accent-foreground: 220 30% 12%;
 
-    --rain-deep: 215 35% 22%;
-    --rain: 205 30% 45%;
+    --rain-deep: 220 35% 8%;
+    --rain: 38 30% 78%;                    /* readable on dark; used for eyebrow labels */
     --mist: 200 25% 80%;
-    --moss: 145 25% 38%;
-    --moss-soft: 145 25% 70%;
-    --lamp: 38 80% 60%;
-    --lamp-soft: 38 90% 78%;
-    --sunset: 22 85% 65%;
-    --sunset-soft: 32 90% 80%;
+    --firefly: 50 95% 70%;                 /* primary firefly glow */
+    --firefly-soft: 45 90% 80%;
+    --lamp: 45 90% 65%;
+    --lamp-soft: 45 95% 80%;
 
     --destructive: 0 65% 58%;
-    --destructive-foreground: 210 30% 98%;
+    --destructive-foreground: 38 28% 92%;
 
-    --border: 210 20% 86%;
-    --input: 210 20% 86%;
-    --ring: 205 35% 38%;
+    --border: 38 15% 30% / 0.35;
+    --input: 38 15% 30% / 0.35;
+    --ring: 45 85% 70%;
 
     --radius: 0.9rem;
 
@@ -54,8 +53,8 @@
     --gradient-sunset: linear-gradient(180deg, hsl(32 80% 78%) 0%, hsl(18 75% 65%) 100%);
     --gradient-veil: linear-gradient(180deg, hsl(215 25% 18% / 0.55) 0%, hsl(215 25% 18% / 0.25) 50%, hsl(215 25% 18% / 0.65) 100%);
 
-    --shadow-soft: 0 8px 24px -12px hsl(215 30% 20% / 0.18);
-    --shadow-card: 0 1px 2px hsl(215 25% 18% / 0.04), 0 8px 30px -10px hsl(215 25% 18% / 0.12);
+    --shadow-soft: 0 8px 24px -12px hsl(0 0% 0% / 0.6);
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.2), 0 12px 40px -12px hsl(0 0% 0% / 0.55);
     --shadow-lamp: 0 0 80px hsl(var(--lamp-soft) / 0.7), 0 0 30px hsl(var(--lamp) / 0.6);
 
     --transition-soft: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -63,7 +62,7 @@
 }
 
 @layer base {
-  * { @apply border-border; }
+  * { border-color: hsl(var(--border)); }
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
@@ -85,30 +84,50 @@
   .transition-soft { transition: var(--transition-soft); }
 
   .glass {
-    background: hsl(210 30% 98% / 0.78);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(210 20% 88% / 0.7);
+    background: hsl(220 25% 14% / 0.55);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(38 25% 80% / 0.12);
   }
   .glass-dark {
-    background: hsl(215 30% 18% / 0.55);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid hsl(210 20% 80% / 0.18);
+    background: hsl(220 30% 8% / 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(38 25% 80% / 0.1);
   }
 
   .text-balance { text-wrap: balance; }
 
-  .cursor-glow {
+  /* Firefly cursor — small glowing dot with soft halo, translated via JS rAF */
+  .cursor-firefly {
     position: fixed;
+    left: 0;
+    top: 0;
     pointer-events: none;
-    width: 240px;
-    height: 240px;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    margin-top: -7px;
     border-radius: 50%;
-    background: radial-gradient(circle, hsl(var(--lamp-soft) / 0.18) 0%, transparent 65%);
-    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      hsl(var(--firefly) / 1) 0%,
+      hsl(var(--firefly-soft) / 0.85) 30%,
+      hsl(var(--firefly) / 0) 70%
+    );
+    box-shadow:
+      0 0 12px 3px hsl(var(--firefly) / 0.6),
+      0 0 28px 10px hsl(var(--firefly-soft) / 0.28);
     z-index: 9999;
     transition: opacity 0.4s ease;
+    animation: firefly-pulse 2.6s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+  /* Hide the system cursor on fine-pointer devices so the firefly is THE cursor */
+  @media (pointer: fine) {
+    html, body, a, button, input, textarea, select, label, [role="button"] {
+      cursor: none !important;
+    }
   }
 }
 
@@ -137,6 +156,16 @@
 @keyframes drift {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+@keyframes firefly-pulse {
+  0%, 100% { opacity: 0.55; filter: brightness(0.85); }
+  50%      { opacity: 1;    filter: brightness(1.25); }
+}
+@keyframes firefly-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(var(--dx, 20px), calc(var(--dy, -10px) * -1)); }
+  50%      { transform: translate(calc(var(--dx, 20px) * -1), var(--dy, -10px)); }
+  75%      { transform: translate(calc(var(--dx, 20px) * 0.5), calc(var(--dy, -10px) * 0.5)); }
 }
 
 .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) both; }
