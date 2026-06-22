@@ -27,14 +27,14 @@ const SideNav = ({ active }: Props) => (
               href={`#${id}`}
               className={`group relative flex items-center justify-center w-10 h-10 rounded-xl transition-soft ${
                 isActive
-                  ? "bg-rain-deep text-primary-foreground shadow-soft"
-                  : "text-foreground/70 hover:bg-muted hover:text-foreground"
+                  ? "bg-firefly text-rain-deep shadow-soft"
+                  : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
               }`}
               aria-label={label}
               aria-current={isActive ? "true" : undefined}
             >
               <Icon className="w-4 h-4" />
-              <span className="pointer-events-none absolute left-12 px-2.5 py-1 rounded-md text-xs whitespace-nowrap bg-rain-deep text-primary-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-soft">
+              <span className="pointer-events-none absolute left-12 px-2.5 py-1 rounded-md text-xs whitespace-nowrap bg-rain-deep text-foreground border border-foreground/15 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-soft">
                 {label}
               </span>
             </a>

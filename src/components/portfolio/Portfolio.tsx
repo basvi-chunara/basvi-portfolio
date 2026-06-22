@@ -1,42 +1,82 @@
 import { useEffect, useState } from "react";
 import {
-  Github, Linkedin, Mail, ExternalLink, Download, MapPin,
-  GraduationCap, Briefcase, BookOpen, Mountain, Users, Sparkles,
+  Github, Linkedin, Mail, Download,
+  GraduationCap, Briefcase, BookOpen, Mountain, Users, Award, BadgeCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import sunsetBg from "@/assets/sunset-meadow.jpg";
+import rainyBg from "@/assets/rainy-stop.jpg";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
 
 const PROJECTS = [
   {
+    title: "Retail Banking Dashboard",
+    tag: "Power BI · DAX · Python",
+    bullets: [
+      "Built a 4-page interactive dashboard analyzing loan exposure, deposit behaviour and customer risk segmentation across income bands, nationalities and occupations.",
+      "Authored DAX measures for KPIs — total loan, total deposit, credit card balance, business lending — and added cross-page action-button navigation.",
+      "Ran full EDA in Pandas/Seaborn before the production build to validate distributions across banking relationships and occupations.",
+      "End-to-end workflow from raw client financial data to stakeholder-ready insights.",
+    ],
+    stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
+    href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
+  },
+  {
+    title: "Airbnb Global Performance Dashboard",
+    tag: "Power BI · DAX · MySQL",
+    bullets: [
+      "Multi-page Power BI dashboard analyzing Airbnb market performance, guest ratings and host trends across global cities (33+ attributes).",
+      "Monitored and validated data feeds from MySQL source tables; ran data-quality checks for reporting reliability.",
+      "Identified pricing inefficiencies, host-trust patterns and satisfaction trends across markets.",
+      "Translated findings into recommendations on pricing strategy, cleanliness and seasonal demand — data storytelling for non-technical stakeholders.",
+    ],
+    stack: ["Power BI", "DAX", "MySQL", "KPI Reporting"],
+    href: "https://github.com/basvi-chunara/Airbnb_Global_Performance_Dashboard",
+  },
+  {
     title: "Business Insights with Tableau",
-    problem: "Four global factories, scattered telemetry, no clear answer to 'where are we losing the most?'",
-    work: "Cleaned and joined production data, then built interactive dashboards comparing sites and pay equity.",
-    impact: "Identified Seiko as the highest-failure site and surfaced pay-gap patterns leadership could act on.",
+    tag: "Tableau · Data Cleaning",
+    bullets: [
+      "Four global factories, scattered telemetry, no clear answer to 'where are we losing the most?'",
+      "Cleaned and joined production data, then built interactive dashboards comparing sites and pay equity.",
+      "Identified Seiko as the highest-failure site and surfaced pay-gap patterns leadership could act on.",
+    ],
     stack: ["Tableau", "JSON", "Data Cleaning"],
+    href: "https://github.com/basvi-chunara",
   },
   {
     title: "SQL Layoffs Data Cleaning",
-    problem: "A messy public layoffs dataset that wasn't usable for analysis as-is.",
-    work: "Wrote MySQL pipelines to deduplicate, normalize formats and fix nulls across thousands of rows.",
-    impact: "Produced an analysis-ready dataset and reusable SQL patterns for future cleaning work.",
+    tag: "MySQL · ETL",
+    bullets: [
+      "Messy public layoffs dataset, not usable for analysis as-is.",
+      "Wrote MySQL pipelines to deduplicate, normalize formats and fix nulls across thousands of rows.",
+      "Produced an analysis-ready dataset and reusable SQL patterns for future cleaning work.",
+    ],
     stack: ["MySQL", "SQL", "ETL"],
+    href: "https://github.com/basvi-chunara",
   },
   {
     title: "Full-Stack Web Application",
-    problem: "Needed to practice end-to-end client–server thinking with real persistence.",
-    work: "Built REST endpoints over PostgreSQL, validated with Postman, deployed on Heroku.",
-    impact: "Working HTTP/JSON app — solid base for future data-driven web tools.",
+    tag: "JavaScript · PostgreSQL",
+    bullets: [
+      "Practiced end-to-end client–server thinking with real persistence.",
+      "Built REST endpoints over PostgreSQL, validated with Postman, deployed on Heroku.",
+      "Working HTTP/JSON app — solid base for future data-driven web tools.",
+    ],
     stack: ["JavaScript", "PostgreSQL", "REST", "Heroku"],
+    href: "https://github.com/basvi-chunara",
   },
   {
     title: "Android Event Management App",
-    problem: "Event organizers needed a simple way to manage entrants, posters and waiting lists.",
-    work: "Shipped poster updates, waiting-list flows and a Maps view plotting entrants in real time, backed by Firestore.",
-    impact: "A complete agile-built Android app used through review-driven sprints.",
+    tag: "Java · Firestore",
+    bullets: [
+      "Event organizers needed a simple way to manage entrants, posters and waiting lists.",
+      "Shipped poster updates, waiting-list flows and a Maps view plotting entrants in real time, backed by Firestore.",
+      "Complete agile-built Android app delivered through review-driven sprints.",
+    ],
     stack: ["Java", "Android", "Firestore", "Google Maps API"],
+    href: "https://github.com/basvi-chunara",
   },
 ];
 
@@ -98,24 +138,53 @@ const EXPERIENCE = [
 ];
 
 const SKILLS = [
-  { group: "Programming", items: ["Python", "Java", "C", "R"] },
-  { group: "Data Tools", items: ["MySQL", "PostgreSQL", "SQL", "MongoDB", "Power BI", "Tableau", "Excel", "Google Analytics", "Jupyter", "SQLite"] },
-  { group: "Technologies", items: ["Git", "GitHub", "HTML", "HTTP", "APIs", "JSON", "Figma"] },
+  {
+    group: "Programming",
+    items: ["Python", "R", "SQL", "MySQL", "PostgreSQL", "SQLite", "Java", "JavaScript", "C"],
+  },
+  {
+    group: "Data & Analytics",
+    items: [
+      "Power BI", "Tableau", "DAX", "Excel", "Dashboard Development", "KPI Reporting",
+      "Pandas", "NumPy", "Matplotlib", "Seaborn", "BigQuery",
+    ],
+  },
+  {
+    group: "Tools & Technologies",
+    items: [
+      "Git", "GitHub", "Linux", "Agile",
+      "Microsoft Office 365", "PowerPoint Presentations", "Postman",
+    ],
+  },
 ];
 
 const COURSES = [
-  "Machine Learning", "Applied Statistics", "Database Management",
-  "Digital Image Processing", "Reinforcement Learning",
+  "Software Engineering",
+  "Web Development",
+  "Machine Learning",
+  "Applied Statistics",
+  "Database Management",
+  "Digital Image Processing",
+  "Reinforcement Learning",
+];
+
+const AWARDS = [
+  "UAlberta Regional Excellence Scholarship",
+  "International Admission Scholarship",
+];
+
+const CERTIFICATIONS = [
+  "Deloitte Data Analytics",
+  "Tata Data Visualization: Empowering Business with Effective Insights",
+  "Prediction & Control with Function Approximation (Reinforcement Learning)",
 ];
 
 const SECTIONS = ["home", "about", "education", "projects", "experience", "skills", "interests", "contact"];
 
 const Portfolio = () => {
   const [active, setActive] = useState("home");
-  const [secret, setSecret] = useState(false);
   const [scroll, setScroll] = useState(0);
 
-  // Track scroll for warm tint progression
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -126,7 +195,6 @@ const Portfolio = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Active section observer
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -143,37 +211,43 @@ const Portfolio = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Rain fades out as we scroll past 60%
-  const rainOpacity = Math.max(0, 1 - scroll * 1.6);
-  // Warm wash fades in toward end
-  const warm = Math.min(1, Math.max(0, (scroll - 0.55) / 0.35));
+  // Subtle rain that softens as the page is scrolled
+  const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
-      <SideNav active={active} />
-
-      {/* Global ambient layers */}
+      {/* Fixed blurred rainy background — consistent throughout */}
       <div
-        className="pointer-events-none fixed inset-0 z-[1] transition-soft"
+        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center"
         style={{
-          background: `linear-gradient(180deg, hsl(var(--sunset-soft) / ${warm * 0.55}), hsl(var(--sunset) / ${warm * 0.35}))`,
-          opacity: warm,
+          backgroundImage: `url(${rainyBg})`,
+          filter: "blur(18px) brightness(0.55) saturate(1.05)",
+          transform: "scale(1.08)",
         }}
         aria-hidden
       />
-      {rainOpacity > 0.05 && <Rain count={70} intensity={rainOpacity * 0.55} />}
+      {/* Dark veil for readability */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(220 35% 6% / 0.72) 0%, hsl(220 35% 8% / 0.78) 50%, hsl(220 35% 6% / 0.85) 100%)",
+        }}
+        aria-hidden
+      />
+
+      {/* Ambient rain — subtle, persistent */}
+      <Rain count={70} intensity={rainOpacity * 0.5} />
+
+      <SideNav active={active} />
 
       {/* HOME */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative z-10 min-h-screen flex items-center"
       >
-        {/* Cool rain gradient backdrop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(210_25%_88%)] via-[hsl(200_20%_92%)] to-[hsl(38_30%_94%)]" />
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top,hsl(205_40%_70%/0.4),transparent_60%)]" />
-
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-10 pl-20 md:pl-24">
-          <p className="text-[11px] uppercase tracking-[0.32em] text-rain mb-5 animate-fade-up">
+        <div className="w-full max-w-5xl mx-auto px-6 md:px-10 pl-20 md:pl-24">
+          <p className="text-[11px] uppercase tracking-[0.32em] text-firefly mb-5 animate-fade-up">
             Hello, I'm
           </p>
           <h1
@@ -183,17 +257,16 @@ const Portfolio = () => {
             Basvi Chunara
           </h1>
           <p
-            className="mt-4 text-lg md:text-xl text-foreground/75 animate-fade-up"
+            className="mt-4 text-lg md:text-xl text-foreground/80 animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Data Enthusiast <span className="text-rain/60 mx-2">·</span> CS Student
+            Data Enthusiast <span className="text-foreground/40 mx-2">·</span> CS Student
           </p>
           <p
-            className="mt-6 max-w-xl text-muted-foreground leading-relaxed animate-fade-up"
+            className="mt-6 max-w-xl text-foreground/70 leading-relaxed animate-fade-up"
             style={{ animationDelay: "0.45s" }}
           >
-            I work with data to find patterns that help people make better decisions —
-            quietly, carefully, and end to end.
+            I work with data to find patterns that help people make better decisions ✨
           </p>
 
           <div
@@ -201,12 +274,12 @@ const Portfolio = () => {
             style={{ animationDelay: "0.6s" }}
           >
             <a href="#projects">
-              <Button className="rounded-full bg-rain-deep hover:bg-rain text-primary-foreground">
+              <Button className="rounded-full bg-firefly text-rain-deep hover:bg-firefly-soft">
                 See projects
               </Button>
             </a>
             <a href="#contact">
-              <Button variant="outline" className="rounded-full border-rain/40 hover:bg-muted">
+              <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                 Get in touch
               </Button>
             </a>
@@ -231,18 +304,14 @@ const Portfolio = () => {
                 the occasional full-stack tool to put a result in front of someone. I learn by
                 building, and I like problems where the data isn't tidy yet.
               </p>
-              <div className="mt-5 flex flex-wrap gap-4 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><MapPin className="w-4 h-4" /> Edmonton, AB</span>
-                <span className="inline-flex items-center gap-1.5"><GraduationCap className="w-4 h-4" /> BSc Computing Science · 2027</span>
-              </div>
             </div>
             <div className="glass rounded-2xl p-7 shadow-card">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-rain mb-3">What I focus on</p>
+              <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3">What I focus on</p>
               <ul className="space-y-2.5 text-sm text-foreground/85">
-                <li className="flex gap-2"><span className="text-rain mt-1.5">▸</span> Data analysis & cleaning</li>
-                <li className="flex gap-2"><span className="text-rain mt-1.5">▸</span> Dashboards & reporting</li>
-                <li className="flex gap-2"><span className="text-rain mt-1.5">▸</span> SQL & data pipelines</li>
-                <li className="flex gap-2"><span className="text-rain mt-1.5">▸</span> Real-world problem solving</li>
+                <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Data analysis & cleaning</li>
+                <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Dashboards & reporting</li>
+                <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> SQL & data pipelines</li>
+                <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Real-world problem solving</li>
               </ul>
             </div>
           </div>
@@ -254,58 +323,87 @@ const Portfolio = () => {
           <div className="glass rounded-2xl p-7 shadow-card">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h3 className="font-display text-xl text-foreground">University of Alberta</h3>
-                <p className="text-rain text-sm mt-0.5">BSc, Computing Science · Edmonton, AB</p>
+                <h3 className="font-display text-xl text-foreground inline-flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-firefly" /> University of Alberta
+                </h3>
+                <p className="text-foreground/65 text-sm mt-1">BSc, Computing Science · Edmonton, AB</p>
               </div>
-              <span className="text-xs px-3 py-1 rounded-full bg-muted text-foreground/70 whitespace-nowrap">
+              <span className="text-xs px-3 py-1 rounded-full bg-foreground/10 text-foreground/80 whitespace-nowrap">
                 Sep 2023 — Jun 2027
               </span>
             </div>
-            <div className="mt-6">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-rain mb-3">Relevant coursework</p>
+
+            <div className="mt-7">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3">Coursework</p>
               <div className="flex flex-wrap gap-2">
                 {COURSES.map((c) => (
-                  <span key={c} className="text-xs px-2.5 py-1 rounded-md bg-muted text-foreground/80 border border-border">{c}</span>
+                  <span key={c} className="text-xs px-2.5 py-1 rounded-md bg-foreground/10 text-foreground/85 border border-foreground/15">
+                    {c}
+                  </span>
                 ))}
               </div>
             </div>
-            <div className="mt-6 pt-5 border-t border-border/70 text-sm text-muted-foreground">
-              <span className="text-foreground/80">Awards:</span> UAlberta Regional Excellence & International Admission Scholarship
-              <span className="mx-3 text-border">·</span>
-              <span className="text-foreground/80">Certifications:</span> Deloitte Data Analytics, Tata Data Visualization, RL with Function Approximation
+
+            <div className="mt-7 pt-6 border-t border-foreground/10">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3 inline-flex items-center gap-2">
+                <Award className="w-3.5 h-3.5" /> Awards
+              </p>
+              <ul className="space-y-1.5 text-sm text-foreground/85">
+                {AWARDS.map((a) => (
+                  <li key={a} className="flex gap-2">
+                    <span className="text-firefly mt-1.5">·</span><span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-foreground/10">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3 inline-flex items-center gap-2">
+                <BadgeCheck className="w-3.5 h-3.5" /> Certifications
+              </p>
+              <ul className="space-y-1.5 text-sm text-foreground/85">
+                {CERTIFICATIONS.map((c) => (
+                  <li key={c} className="flex gap-2">
+                    <span className="text-firefly mt-1.5">·</span><span>{c}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
         {/* PROJECTS */}
         <section id="projects" className="py-20 scroll-mt-20">
-          <SectionTitle eyebrow="Projects" title="Things I've built." subtitle="Each one started with a real question and ended with something usable." />
+          <SectionTitle
+            eyebrow="Projects"
+            title="Things I've built."
+            subtitle="Each one started with a real question and ended with something usable."
+          />
           <div className="grid md:grid-cols-2 gap-5">
             {PROJECTS.map((p) => (
-              <article key={p.title} className="glass rounded-2xl p-6 shadow-card hover:-translate-y-0.5 hover:shadow-soft transition-soft">
+              <article
+                key={p.title}
+                className="glass rounded-2xl p-6 shadow-card hover:-translate-y-0.5 transition-soft flex flex-col"
+              >
+                <p className="text-[10px] uppercase tracking-[0.22em] text-firefly mb-2">{p.tag}</p>
                 <h3 className="font-display text-lg text-foreground mb-3">{p.title}</h3>
-                <dl className="space-y-2.5 text-sm">
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-[0.22em] text-rain mb-0.5">Problem</dt>
-                    <dd className="text-foreground/80">{p.problem}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-[0.22em] text-rain mb-0.5">What I did</dt>
-                    <dd className="text-foreground/80">{p.work}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-[0.22em] text-rain mb-0.5">Impact</dt>
-                    <dd className="text-foreground/80">{p.impact}</dd>
-                  </div>
-                </dl>
+                <ul className="space-y-2 text-sm text-foreground/80 flex-1">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="text-firefly mt-1.5 shrink-0">·</span><span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {p.stack.map((s) => (
-                    <span key={s} className="text-[11px] px-2 py-0.5 rounded-md bg-muted text-muted-foreground border border-border/70">{s}</span>
+                    <span key={s} className="text-[11px] px-2 py-0.5 rounded-md bg-foreground/10 text-foreground/75 border border-foreground/15">
+                      {s}
+                    </span>
                   ))}
                 </div>
                 <div className="mt-4">
-                  <a href="https://github.com/basvi-chunara" target="_blank" rel="noreferrer">
-                    <Button size="sm" variant="outline" className="rounded-full border-border hover:bg-muted">
+                  <a href={p.href} target="_blank" rel="noreferrer">
+                    <Button size="sm" variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                       <Github className="w-3.5 h-3.5 mr-1.5" /> View on GitHub
                     </Button>
                   </a>
@@ -319,26 +417,26 @@ const Portfolio = () => {
         <section id="experience" className="py-20 scroll-mt-20">
           <SectionTitle eyebrow="Experience" title="The path so far." />
           <div className="relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" aria-hidden />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-foreground/15 md:-translate-x-1/2" aria-hidden />
             <ol className="space-y-10">
               {EXPERIENCE.map((e, i) => {
                 const right = i % 2 === 1;
                 return (
                   <li key={e.role + e.org} className="relative md:grid md:grid-cols-2 md:gap-10">
                     <span
-                      className="absolute left-4 md:left-1/2 -translate-x-1/2 top-5 w-3 h-3 rounded-full bg-rain border-2 border-background shadow-soft"
+                      className="absolute left-4 md:left-1/2 -translate-x-1/2 top-5 w-3 h-3 rounded-full bg-firefly border-2 border-background shadow-soft"
                       aria-hidden
                     />
                     <div className={`pl-12 md:pl-0 ${right ? "md:col-start-2" : "md:col-start-1 md:text-right"}`}>
                       <div className={`glass rounded-2xl p-5 shadow-card text-left inline-block max-w-md ${right ? "" : "md:ml-auto"}`}>
-                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-rain mb-1.5">
+                        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-firefly mb-1.5">
                           <Briefcase className="w-3.5 h-3.5" /> <span>{e.period}</span>
                         </div>
                         <h3 className="font-display text-lg text-foreground">{e.role}</h3>
-                        <p className="text-sm text-foreground/70 mb-3">{e.org}</p>
-                        <ul className="space-y-1.5 text-sm text-foreground/80">
+                        <p className="text-sm text-foreground/65 mb-3">{e.org}</p>
+                        <ul className="space-y-1.5 text-sm text-foreground/85">
                           {e.points.map((pt) => (
-                            <li key={pt} className="flex gap-2"><span className="text-rain mt-1.5">·</span><span>{pt}</span></li>
+                            <li key={pt} className="flex gap-2"><span className="text-firefly mt-1.5">·</span><span>{pt}</span></li>
                           ))}
                         </ul>
                       </div>
@@ -359,7 +457,9 @@ const Portfolio = () => {
                 <h3 className="font-display text-base text-foreground mb-4">{s.group}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {s.items.map((it) => (
-                    <span key={it} className="text-xs px-2.5 py-1 rounded-md bg-muted text-foreground/80 border border-border/70">{it}</span>
+                    <span key={it} className="text-xs px-2.5 py-1 rounded-md bg-foreground/10 text-foreground/85 border border-foreground/15">
+                      {it}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -376,81 +476,49 @@ const Portfolio = () => {
               { Icon: Mountain, label: "Mountains" },
               { Icon: Users, label: "Teaching" },
             ].map(({ Icon, label }) => (
-              <div key={label} className="glass rounded-2xl p-7 shadow-card flex flex-col items-center text-center hover:-translate-y-0.5 transition-soft">
-                <Icon className="w-7 h-7 text-rain mb-3" />
+              <div
+                key={label}
+                className="glass rounded-2xl p-7 shadow-card flex flex-col items-center text-center hover:-translate-y-0.5 transition-soft"
+              >
+                <Icon className="w-7 h-7 text-firefly mb-3" />
                 <p className="font-display text-base text-foreground">{label}</p>
               </div>
             ))}
-          </div>
-
-          {/* Hidden lamp easter egg */}
-          <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground">
-            <button
-              onClick={() => setSecret((s) => !s)}
-              aria-label="A small secret"
-              className="group relative w-10 h-10 rounded-full glass shadow-card flex items-center justify-center hover:scale-105 transition-soft"
-            >
-              <Sparkles className={`w-4 h-4 transition-soft ${secret ? "text-lamp" : "text-rain/70 group-hover:text-lamp"}`} />
-              {!secret && (
-                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-lamp animate-lamp" />
-              )}
-            </button>
-            <span
-              className={`transition-soft ${secret ? "opacity-100 translate-x-0 text-foreground/85" : "opacity-0 -translate-x-1 pointer-events-none"}`}
-            >
-              And quietly — a trained Bharatanatyam dancer.
-            </span>
-          </div>
-        </section>
-
-        {/* SUNSET TRANSITION */}
-        <section className="py-20">
-          <div className="relative rounded-3xl overflow-hidden shadow-card h-[260px] md:h-[340px]">
-            <img
-              src={sunsetBg}
-              alt="A calm Ghibli-style sunset over rolling hills"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-              width={1920}
-              height={1080}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute inset-0 flex items-end p-6 md:p-10">
-              <p className="font-display text-2xl md:text-3xl text-rain-deep max-w-md leading-snug">
-                The rain quiets. The sky clears. Something useful gets made.
-              </p>
-            </div>
           </div>
         </section>
 
         {/* CONTACT */}
         <section id="contact" className="py-20 scroll-mt-20">
-          <SectionTitle eyebrow="Contact" title="Let's talk." subtitle="Open to data analyst / data science internships, research collaborations, and good problems." />
+          <SectionTitle
+            eyebrow="Contact"
+            title="Let's talk."
+            subtitle="Open to data internships, research collaborations, and solving problems in the data and AI space."
+          />
           <div className="glass rounded-2xl p-7 md:p-9 shadow-card">
             <a
               href="mailto:basviyog@ualberta.ca"
-              className="font-display text-2xl md:text-3xl text-rain-deep hover:text-accent transition-soft break-all"
+              className="font-display text-2xl md:text-3xl text-foreground hover:text-firefly transition-soft break-all"
             >
               basviyog@ualberta.ca
             </a>
             <div className="mt-7 flex flex-wrap gap-2.5">
               <a href="mailto:basviyog@ualberta.ca">
-                <Button className="rounded-full bg-rain-deep hover:bg-rain text-primary-foreground">
+                <Button className="rounded-full bg-firefly text-rain-deep hover:bg-firefly-soft">
                   <Mail className="w-4 h-4 mr-2" /> Email
                 </Button>
               </a>
               <a href="https://www.linkedin.com/in/basvichunara/" target="_blank" rel="noreferrer">
-                <Button variant="outline" className="rounded-full border-border hover:bg-muted">
+                <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
                 </Button>
               </a>
               <a href="https://github.com/basvi-chunara" target="_blank" rel="noreferrer">
-                <Button variant="outline" className="rounded-full border-border hover:bg-muted">
+                <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Github className="w-4 h-4 mr-2" /> GitHub
                 </Button>
               </a>
               <a href="/resume.pdf" download>
-                <Button variant="outline" className="rounded-full border-border hover:bg-muted">
+                <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Download className="w-4 h-4 mr-2" /> Resume
                 </Button>
               </a>
@@ -458,8 +526,8 @@ const Portfolio = () => {
           </div>
         </section>
 
-        <footer className="py-10 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Basvi Chunara · Made with care.
+        <footer className="py-10 text-center text-xs text-foreground/55">
+          © {new Date().getFullYear()} Basvi Chunara
         </footer>
       </main>
     </div>
