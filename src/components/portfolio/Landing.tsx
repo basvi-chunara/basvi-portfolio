@@ -1,57 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import rainyBg from "@/assets/rainy-stop.jpg";
 import Rain from "./Rain";
+import Fireflies from "./Fireflies";
 
-const Landing = () => {
-  // 0 at top of page, 1 when the first viewport has fully scrolled away.
-  const [progress, setProgress] = useState(0);
+interface Props { onEnter: () => void; }
 
-  useEffect(() => {
-    const onScroll = () => {
-      const vh = window.innerHeight || 1;
-      setProgress(Math.min(1, Math.max(0, window.scrollY / vh)));
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+const Landing = ({ onEnter }: Props) => {
+  const [leaving, setLeaving] = useState(false);
 
-  // Background gradually softens and blurs as the user scrolls into the portfolio.
-  const blurPx = progress * 18;
-  const sceneOpacity = 1 - progress * 0.9;
-  const contentOpacity = 1 - Math.min(1, progress * 1.6);
-  const rainIntensity = Math.max(0, 1 - progress * 1.15);
+  const handleEnter = () => {
+    if (leaving) return;
+    setLeaving(true);
+    setTimeout(onEnter, 850);
+  };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Fixed background scene that fades + blurs while scrolling */}
+    <div
+      className={`fixed inset-0 z-[100] overflow-hidden ${leaving ? "animate-zoom-out" : "animate-fade-in"}`}
+    >
+      {/* Background scene */}
       <div
-        className="fixed inset-0 z-0 bg-cover bg-center will-change-[filter,opacity]"
-        style={{
-          backgroundImage: `url(${rainyBg})`,
-          filter: `blur(${blurPx}px) brightness(${1 - progress * 0.35})`,
-          opacity: sceneOpacity,
-          transform: `scale(${1 + progress * 0.06})`,
-        }}
-        aria-hidden
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${rainyBg})` }}
       />
       {/* Soft veil for legibility — light, not gloomy */}
-      <div
-        className="fixed inset-0 z-0 bg-gradient-to-b from-rain-deep/40 via-rain-deep/15 to-rain-deep/55"
-        style={{ opacity: sceneOpacity }}
-        aria-hidden
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-rain-deep/40 via-rain-deep/15 to-rain-deep/55" />
 
-      {/* Rain — gradually thins out as user scrolls */}
-      {rainIntensity > 0.02 && (
-        <Rain count={140} intensity={rainIntensity * 0.9} />
-      )}
+      {/* Rain */}
+      <Rain count={140} intensity={0.9} />
+
+      {/* Clickable fireflies — entry interaction */}
+      <Fireflies count={16} interactive onClick={handleEnter} />
 
       {/* Content */}
-      <div
-        className="relative z-10 h-full w-full flex flex-col items-center justify-center px-6 text-center"
-        style={{ opacity: contentOpacity, transform: `translateY(${progress * -20}px)` }}
-      >
+      <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-6 text-center">
         <p
           className="text-xs md:text-sm uppercase tracking-[0.3em] text-mist/90 mb-5 animate-fade-up"
           style={{ animationDelay: "0.2s" }}
@@ -68,10 +50,10 @@ const Landing = () => {
           className="mt-5 text-sm md:text-base text-mist/90 max-w-md animate-fade-up"
           style={{ animationDelay: "0.7s" }}
         >
-          Scroll to follow the fireflies inside.
+          Follow a firefly to step inside.
         </p>
       </div>
-    </section>
+    </div>
   );
 };
 
