@@ -4,10 +4,9 @@ import {
   GraduationCap, Briefcase, BookOpen, Mountain, Users, Award, BadgeCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import rainyBg from "@/assets/rainy-stop.jpg";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
-import Rain from "./Rain";
+import rainyBg from "@/assets/rainy-stop.jpg";
 
 const PROJECTS = [
   {
@@ -211,8 +210,8 @@ const Portfolio = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Subtle rain that softens as the page is scrolled
-  const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
+  // Scroll value retained for potential future effects.
+  void scroll;
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -235,9 +234,6 @@ const Portfolio = () => {
         }}
         aria-hidden
       />
-
-      {/* Ambient rain — subtle, persistent */}
-      <Rain count={70} intensity={rainOpacity * 0.5} />
 
       <SideNav active={active} />
 
