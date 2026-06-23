@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Landing from "@/components/portfolio/Landing";
 import Portfolio from "@/components/portfolio/Portfolio";
 import CursorGlow from "@/components/portfolio/CursorGlow";
+import Fireflies from "@/components/portfolio/Fireflies";
 
 const Index = () => {
-  const [entered, setEntered] = useState(false);
-
   useEffect(() => {
     document.title = "Basvi Chunara · Data Enthusiast & CS Student";
     const desc =
@@ -21,8 +20,12 @@ const Index = () => {
   return (
     <>
       <CursorGlow />
-      {!entered && <Landing onEnter={() => setEntered(true)} />}
+      <Landing />
       <Portfolio />
+      {/* Persistent fireflies that follow the user through the whole journey */}
+      <div className="fixed inset-0 z-[60] pointer-events-none">
+        <Fireflies count={10} />
+      </div>
     </>
   );
 };
