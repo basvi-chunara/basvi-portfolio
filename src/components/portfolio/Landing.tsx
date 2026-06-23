@@ -2,6 +2,7 @@ import { useState } from "react";
 import rainyBg from "@/assets/rainy-stop.jpg";
 import Rain from "./Rain";
 import Fireflies from "./Fireflies";
+import { Button } from "@/components/ui/button";
 
 interface Props { onEnter: () => void; }
 
@@ -29,8 +30,8 @@ const Landing = ({ onEnter }: Props) => {
       {/* Rain */}
       <Rain count={140} intensity={0.9} />
 
-      {/* Clickable fireflies — entry interaction */}
-      <Fireflies count={16} interactive onClick={handleEnter} />
+      {/* Ambient fireflies — purely decorative */}
+      <Fireflies count={18} />
 
       {/* Content */}
       <div className="relative z-10 h-full w-full flex flex-col items-center justify-center px-6 text-center">
@@ -46,12 +47,17 @@ const Landing = ({ onEnter }: Props) => {
         >
           Turning data into useful insights.
         </h1>
-        <p
-          className="mt-5 text-sm md:text-base text-mist/90 max-w-md animate-fade-up"
+        <div
+          className="mt-8 animate-fade-up"
           style={{ animationDelay: "0.7s" }}
         >
-          Follow a firefly to step inside.
-        </p>
+          <Button
+            onClick={handleEnter}
+            className="rounded-full bg-firefly/90 text-rain-deep hover:bg-firefly px-7 py-5 text-sm tracking-wide shadow-lamp"
+          >
+            Step inside
+          </Button>
+        </div>
       </div>
     </div>
   );
