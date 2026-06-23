@@ -8,16 +8,16 @@ import rainyBg from "@/assets/rainy-stop.jpg";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
+import Fireflies from "./Fireflies";
 
 const PROJECTS = [
   {
     title: "Retail Banking Dashboard",
     tag: "Power BI · DAX · Python",
     bullets: [
-      "Built a 4-page interactive dashboard analyzing loan exposure, deposit behaviour and customer risk segmentation across income bands, nationalities and occupations.",
-      "Authored DAX measures for KPIs — total loan, total deposit, credit card balance, business lending — and added cross-page action-button navigation.",
-      "Ran full EDA in Pandas/Seaborn before the production build to validate distributions across banking relationships and occupations.",
-      "End-to-end workflow from raw client financial data to stakeholder-ready insights.",
+      "Situation / Task: A retail bank needed visibility into loan exposure, deposit behaviour and customer risk across income bands, nationalities and occupations.",
+      "Action: Ran full EDA in Pandas/Seaborn, authored DAX measures (total loan, total deposit, credit card balance, business lending) and built a 4-page Power BI dashboard with action-button navigation.",
+      "Result: Delivered a stakeholder-ready report exposing segmentation patterns and gave the team an end-to-end workflow from raw client data to actionable insight.",
     ],
     stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
     href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
@@ -26,10 +26,9 @@ const PROJECTS = [
     title: "Airbnb Global Performance Dashboard",
     tag: "Power BI · DAX · MySQL",
     bullets: [
-      "Multi-page Power BI dashboard analyzing Airbnb market performance, guest ratings and host trends across global cities (33+ attributes).",
-      "Monitored and validated data feeds from MySQL source tables; ran data-quality checks for reporting reliability.",
-      "Identified pricing inefficiencies, host-trust patterns and satisfaction trends across markets.",
-      "Translated findings into recommendations on pricing strategy, cleanliness and seasonal demand — data storytelling for non-technical stakeholders.",
+      "Situation / Task: Needed a single view of Airbnb market performance, guest ratings and host trends across global cities using a 33+ attribute dataset.",
+      "Action: Monitored and validated MySQL data feeds, ran data-quality checks, then built a multi-page Power BI dashboard with DAX-driven KPI visuals.",
+      "Result: Surfaced pricing inefficiencies, host-trust patterns and satisfaction trends, translated into recommendations on pricing, cleanliness and seasonal demand for non-technical stakeholders.",
     ],
     stack: ["Power BI", "DAX", "MySQL", "KPI Reporting"],
     href: "https://github.com/basvi-chunara/Airbnb_Global_Performance_Dashboard",
@@ -213,6 +212,10 @@ const Portfolio = () => {
 
   // Subtle rain that softens as the page is scrolled
   const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
+  // Gradually increase blur as the user moves into the content
+  // (8px near the top → 26px deeper down).
+  const bgBlur = 8 + scroll * 18;
+  const bgDim = 0.55 - scroll * 0.1;
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -221,8 +224,9 @@ const Portfolio = () => {
         className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${rainyBg})`,
-          filter: "blur(18px) brightness(0.55) saturate(1.05)",
+          filter: `blur(${bgBlur}px) brightness(${bgDim}) saturate(1.05)`,
           transform: "scale(1.08)",
+          transition: "filter 0.2s linear",
         }}
         aria-hidden
       />
@@ -238,6 +242,11 @@ const Portfolio = () => {
 
       {/* Ambient rain — subtle, persistent */}
       <Rain count={70} intensity={rainOpacity * 0.5} />
+
+      {/* Edge fireflies — guide the eye along the margins, never behind text */}
+      <div className="pointer-events-none fixed inset-0 z-[1]" aria-hidden>
+        <Fireflies count={18} layout="edges" />
+      </div>
 
       <SideNav active={active} />
 
