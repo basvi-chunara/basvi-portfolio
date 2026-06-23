@@ -8,6 +8,7 @@ import rainyBg from "@/assets/rainy-stop.jpg";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
+import Fireflies from "./Fireflies";
 
 const PROJECTS = [
   {
