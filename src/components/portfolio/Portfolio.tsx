@@ -212,6 +212,10 @@ const Portfolio = () => {
 
   // Subtle rain that softens as the page is scrolled
   const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
+  // Gradually increase blur as the user moves into the content
+  // (8px near the top → 26px deeper down).
+  const bgBlur = 8 + scroll * 18;
+  const bgDim = 0.55 - scroll * 0.1;
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -220,8 +224,9 @@ const Portfolio = () => {
         className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${rainyBg})`,
-          filter: "blur(18px) brightness(0.55) saturate(1.05)",
+          filter: `blur(${bgBlur}px) brightness(${bgDim}) saturate(1.05)`,
           transform: "scale(1.08)",
+          transition: "filter 0.2s linear",
         }}
         aria-hidden
       />
@@ -237,6 +242,11 @@ const Portfolio = () => {
 
       {/* Ambient rain — subtle, persistent */}
       <Rain count={70} intensity={rainOpacity * 0.5} />
+
+      {/* Edge fireflies — guide the eye along the margins, never behind text */}
+      <div className="pointer-events-none fixed inset-0 z-[1]" aria-hidden>
+        <Fireflies count={18} layout="edges" />
+      </div>
 
       <SideNav active={active} />
 
