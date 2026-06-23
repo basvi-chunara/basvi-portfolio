@@ -42,23 +42,34 @@ const Fireflies = ({ count = 14, interactive = false, onClick, className = "" }:
           onClick={interactive ? onClick : undefined}
           aria-label={interactive ? "Enter portfolio" : undefined}
           tabIndex={interactive ? 0 : -1}
-          className={`absolute rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-firefly/70 ${
+          className={`absolute grid place-items-center rounded-full bg-transparent border-0 p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-firefly/70 ${
             interactive ? "pointer-events-auto cursor-pointer" : ""
           }`}
           style={{
-            left: `${f.left}%`,
-            top: `${f.top}%`,
-            width: f.size,
-            height: f.size,
-            background: "radial-gradient(circle, hsl(50 95% 78% / 1) 0%, hsl(45 90% 65% / 0.9) 35%, hsl(40 80% 55% / 0) 70%)",
-            boxShadow:
-              "0 0 8px 2px hsl(50 95% 70% / 0.55), 0 0 18px 6px hsl(45 90% 60% / 0.30)",
-            animation: `firefly-drift ${f.duration}s ease-in-out ${f.delay}s infinite, firefly-pulse 2.6s ease-in-out ${f.pulseDelay}s infinite`,
-            // expose drift distances to keyframes
+            // Larger transparent hit area so the tiny glow is easy to click/tap
+            left: `calc(${f.left}% - 22px)`,
+            top: `calc(${f.top}% - 22px)`,
+            width: 44,
+            height: 44,
+            animation: `firefly-drift ${f.duration}s ease-in-out ${f.delay}s infinite`,
             ["--dx" as any]: `${f.dx}px`,
             ["--dy" as any]: `${f.dy}px`,
           }}
-        />
+        >
+          <span
+            aria-hidden="true"
+            className="block rounded-full"
+            style={{
+              width: f.size,
+              height: f.size,
+              background:
+                "radial-gradient(circle, hsl(50 95% 78% / 1) 0%, hsl(45 90% 65% / 0.9) 35%, hsl(40 80% 55% / 0) 70%)",
+              boxShadow:
+                "0 0 8px 2px hsl(50 95% 70% / 0.55), 0 0 18px 6px hsl(45 90% 60% / 0.30)",
+              animation: `firefly-pulse 2.6s ease-in-out ${f.pulseDelay}s infinite`,
+            }}
+          />
+        </button>
       ))}
     </div>
   );
