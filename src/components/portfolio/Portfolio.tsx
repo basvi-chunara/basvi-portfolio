@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import rainyBg from "@/assets/rainy-stop.jpg";
+import basviPhoto from "@/assets/basvi.jpg.asset.json";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
