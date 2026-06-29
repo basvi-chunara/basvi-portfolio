@@ -211,12 +211,15 @@ const Portfolio = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Subtle rain that softens as the page is scrolled
-  const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
-  // Gradually increase blur as the user moves into the content
-  // (8px near the top → 26px deeper down).
-  const bgBlur = 8 + scroll * 18;
-  const bgDim = 0.55 - scroll * 0.1;
+  // Subtle rain that softens slightly as the page is scrolled, but
+  // always remains visible throughout the journey.
+  const rainOpacity = Math.max(0.35, 1 - scroll * 0.6);
+  // Background blur ramps from 0 (landing, crisp) to ~24px deeper down.
+  const bgBlur = scroll * 24;
+  // Background dims subtly so text stays readable over the blur.
+  const bgDim = 0.95 - scroll * 0.35;
+  // Dark veil fades in with scroll so the landing stays bright/airy.
+  const veilAlpha = 0.15 + scroll * 0.65;
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -231,12 +234,18 @@ const Portfolio = () => {
         }}
         aria-hidden
       />
-      {/* Dark veil for readability */}
+      {/* Veil — light over the landing, deepens with scroll */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          background:
-            "linear-gradient(180deg, hsl(220 35% 6% / 0.72) 0%, hsl(220 35% 8% / 0.78) 50%, hsl(220 35% 6% / 0.85) 100%)",
+          background: `linear-gradient(180deg, hsl(220 35% 8% / ${Math.max(
+            0.05,
+            veilAlpha - 0.1
+          )}) 0%, hsl(220 35% 6% / ${veilAlpha}) 60%, hsl(220 35% 4% / ${Math.min(
+            0.92,
+            veilAlpha + 0.08
+          )}) 100%)`,
+          transition: "background 0.2s linear",
         }}
         aria-hidden
       />
