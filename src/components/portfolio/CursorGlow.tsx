@@ -11,16 +11,21 @@ const CursorGlow = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-    if (isCoarse) return;
-
-    const move = (e: MouseEvent) => {
+    const move = (e: PointerEvent) => {
       target.current.x = e.clientX;
       target.current.y = e.clientY;
       setVisible(true);
     };
     const leave = () => setVisible(false);
-    window.addEventListener("mousemove", move);
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerdown", move, { passive: true });
+    window.addEventListener("touchmove", (e) => {
+      const t = e.touches[0];
+      if (!t) return;
+      target.current.x = t.clientX;
+      target.current.y = t.clientY;
+      setVisible(true);
+    }, { passive: true });
     window.addEventListener("mouseleave", leave);
 
     let raf = 0;
@@ -35,7 +40,8 @@ const CursorGlow = () => {
     raf = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("mousemove", move);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerdown", move);
       window.removeEventListener("mouseleave", leave);
       cancelAnimationFrame(raf);
     };
@@ -44,7 +50,7 @@ const CursorGlow = () => {
   return (
     <div
       ref={ref}
-      className="cursor-firefly hidden md:block"
+      className="cursor-firefly"
       style={{ opacity: visible ? 1 : 0 }}
       aria-hidden
     />
