@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import rainyBg from "@/assets/rainy-stop.jpg";
+import basviPhoto from "@/assets/basvi.jpg.asset.json";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
@@ -210,12 +211,15 @@ const Portfolio = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Subtle rain that softens as the page is scrolled
-  const rainOpacity = Math.max(0.15, 1 - scroll * 1.1);
-  // Gradually increase blur as the user moves into the content
-  // (8px near the top → 26px deeper down).
-  const bgBlur = 8 + scroll * 18;
-  const bgDim = 0.55 - scroll * 0.1;
+  // Subtle rain that softens slightly as the page is scrolled, but
+  // always remains visible throughout the journey.
+  const rainOpacity = Math.max(0.35, 1 - scroll * 0.6);
+  // Background blur ramps from 0 (landing, crisp) to ~24px deeper down.
+  const bgBlur = scroll * 24;
+  // Background dims subtly so text stays readable over the blur.
+  const bgDim = 0.95 - scroll * 0.35;
+  // Dark veil fades in with scroll so the landing stays bright/airy.
+  const veilAlpha = 0.15 + scroll * 0.65;
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -230,12 +234,18 @@ const Portfolio = () => {
         }}
         aria-hidden
       />
-      {/* Dark veil for readability */}
+      {/* Veil — light over the landing, deepens with scroll */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          background:
-            "linear-gradient(180deg, hsl(220 35% 6% / 0.72) 0%, hsl(220 35% 8% / 0.78) 50%, hsl(220 35% 6% / 0.85) 100%)",
+          background: `linear-gradient(180deg, hsl(220 35% 8% / ${Math.max(
+            0.05,
+            veilAlpha - 0.1
+          )}) 0%, hsl(220 35% 6% / ${veilAlpha}) 60%, hsl(220 35% 4% / ${Math.min(
+            0.92,
+            veilAlpha + 0.08
+          )}) 100%)`,
+          transition: "background 0.2s linear",
         }}
         aria-hidden
       />
@@ -301,22 +311,32 @@ const Portfolio = () => {
         {/* ABOUT */}
         <section id="about" className="py-24 scroll-mt-20">
           <SectionTitle eyebrow="About" title="A short introduction." />
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 glass rounded-2xl p-7 shadow-card">
-              <p className="text-foreground/85 leading-relaxed">
-                I'm a fourth-year Computing Science student at the University of Alberta who
-                likes working with data — cleaning it, asking questions of it, and turning the
-                answers into something a person can actually use.
-              </p>
-              <p className="mt-4 text-foreground/85 leading-relaxed">
-                Most of what I do is practical: SQL pipelines, dashboards, small analyses, and
-                the occasional full-stack tool to put a result in front of someone. I learn by
-                building, and I like problems where the data isn't tidy yet.
-              </p>
+          <div className="glass rounded-2xl p-7 md:p-9 shadow-card">
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+              <div>
+                <p className="text-foreground/85 leading-relaxed">
+                  I'm a fourth-year Computing Science student at the University of Alberta who
+                  likes working with data — cleaning it, asking questions of it, and turning the
+                  answers into something a person can actually use.
+                </p>
+                <p className="mt-4 text-foreground/85 leading-relaxed">
+                  Most of what I do is practical: SQL pipelines, dashboards, small analyses, and
+                  the occasional full-stack tool to put a result in front of someone. I learn by
+                  building, and I like problems where the data isn't tidy yet.
+                </p>
+              </div>
+              <div className="justify-self-center md:justify-self-end">
+                <img
+                  src={basviPhoto.url}
+                  alt="Portrait of Basvi Chunara"
+                  loading="lazy"
+                  className="w-44 h-44 md:w-56 md:h-56 rounded-2xl object-cover shadow-card border border-foreground/15"
+                />
+              </div>
             </div>
-            <div className="glass rounded-2xl p-7 shadow-card">
+            <div className="mt-7 pt-6 border-t border-foreground/10">
               <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3">What I focus on</p>
-              <ul className="space-y-2.5 text-sm text-foreground/85">
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-foreground/85">
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Data analysis & cleaning</li>
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Dashboards & reporting</li>
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> SQL & data pipelines</li>

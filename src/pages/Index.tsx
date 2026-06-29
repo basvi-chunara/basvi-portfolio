@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
-import Landing from "@/components/portfolio/Landing";
+import { useEffect } from "react";
 import Portfolio from "@/components/portfolio/Portfolio";
 import CursorGlow from "@/components/portfolio/CursorGlow";
 
 const Index = () => {
-  const [entered, setEntered] = useState(false);
-
   useEffect(() => {
+    // Always start at the very top on (re)load
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     document.title = "Basvi Chunara · Data Enthusiast & CS Student";
     const desc =
       "Portfolio of Basvi Chunara — a Computing Science student at the University of Alberta turning data into useful, practical insights.";
@@ -21,7 +24,6 @@ const Index = () => {
   return (
     <>
       <CursorGlow />
-      {!entered && <Landing onEnter={() => setEntered(true)} />}
       <Portfolio />
     </>
   );
