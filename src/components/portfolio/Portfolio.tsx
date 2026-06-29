@@ -311,22 +311,32 @@ const Portfolio = () => {
         {/* ABOUT */}
         <section id="about" className="py-24 scroll-mt-20">
           <SectionTitle eyebrow="About" title="A short introduction." />
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 glass rounded-2xl p-7 shadow-card">
-              <p className="text-foreground/85 leading-relaxed">
-                I'm a fourth-year Computing Science student at the University of Alberta who
-                likes working with data — cleaning it, asking questions of it, and turning the
-                answers into something a person can actually use.
-              </p>
-              <p className="mt-4 text-foreground/85 leading-relaxed">
-                Most of what I do is practical: SQL pipelines, dashboards, small analyses, and
-                the occasional full-stack tool to put a result in front of someone. I learn by
-                building, and I like problems where the data isn't tidy yet.
-              </p>
+          <div className="glass rounded-2xl p-7 md:p-9 shadow-card">
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+              <div>
+                <p className="text-foreground/85 leading-relaxed">
+                  I'm a fourth-year Computing Science student at the University of Alberta who
+                  likes working with data — cleaning it, asking questions of it, and turning the
+                  answers into something a person can actually use.
+                </p>
+                <p className="mt-4 text-foreground/85 leading-relaxed">
+                  Most of what I do is practical: SQL pipelines, dashboards, small analyses, and
+                  the occasional full-stack tool to put a result in front of someone. I learn by
+                  building, and I like problems where the data isn't tidy yet.
+                </p>
+              </div>
+              <div className="justify-self-center md:justify-self-end">
+                <img
+                  src={basviPhoto.url}
+                  alt="Portrait of Basvi Chunara"
+                  loading="lazy"
+                  className="w-44 h-44 md:w-56 md:h-56 rounded-2xl object-cover shadow-card border border-foreground/15"
+                />
+              </div>
             </div>
-            <div className="glass rounded-2xl p-7 shadow-card">
+            <div className="mt-7 pt-6 border-t border-foreground/10">
               <p className="text-[11px] uppercase tracking-[0.28em] text-firefly mb-3">What I focus on</p>
-              <ul className="space-y-2.5 text-sm text-foreground/85">
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-foreground/85">
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Data analysis & cleaning</li>
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> Dashboards & reporting</li>
                 <li className="flex gap-2"><span className="text-firefly mt-1.5">▸</span> SQL & data pipelines</li>
