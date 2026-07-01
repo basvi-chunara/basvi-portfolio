@@ -16,9 +16,8 @@ const PROJECTS = [
     title: "Retail Banking Dashboard",
     tag: "Power BI · DAX · Python",
     bullets: [
-      "Situation / Task: A retail bank needed visibility into loan exposure, deposit behaviour and customer risk across income bands, nationalities and occupations.",
-      "Action: Ran full EDA in Pandas/Seaborn, authored DAX measures (total loan, total deposit, credit card balance, business lending) and built a 4-page Power BI dashboard with action-button navigation.",
-      "Result: Delivered a stakeholder-ready report exposing segmentation patterns and gave the team an end-to-end workflow from raw client data to actionable insight.",
+      "Designed a 4-page interactive Power BI dashboard analyzing 50K+ customer records to uncover loan exposure, deposit behaviour, credit balances, and risk segmentation patterns. Performed end-to-end data analysis using Python (Pandas, Seaborn) to clean financial datasets and conduct exploratory data analysis.",
+      "Developed 8+ DAX measures for KPIs (total loan, deposits, credit card balance, business lending). Implemented cross-page navigation and drill-down capabilities, translating complex financial data into clear, actionable insights for non-technical stakeholders.",
     ],
     stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
     href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
@@ -27,9 +26,8 @@ const PROJECTS = [
     title: "Airbnb Global Performance Dashboard",
     tag: "Power BI · DAX · MySQL",
     bullets: [
-      "Situation / Task: Needed a single view of Airbnb market performance, guest ratings and host trends across global cities using a 33+ attribute dataset.",
-      "Action: Monitored and validated MySQL data feeds, ran data-quality checks, then built a multi-page Power BI dashboard with DAX-driven KPI visuals.",
-      "Result: Surfaced pricing inefficiencies, host-trust patterns and satisfaction trends, translated into recommendations on pricing, cleanliness and seasonal demand for non-technical stakeholders.",
+      "Built a multi-page Power BI dashboard analyzing Airbnb market performance across 33+ data attributes and global cities, monitoring MySQL source tables with data validation checks to ensure reporting accuracy. Developed KPI visuals identifying pricing inefficiencies, host trust patterns, and customer satisfaction trends across markets.",
+      "Synthesized dashboard findings into 5 actionable business recommendations covering host trust scoring, dynamic pricing strategy, cleanliness improvement programs, and seasonal demand forecasting.",
     ],
     stack: ["Power BI", "DAX", "MySQL", "KPI Reporting"],
     href: "https://github.com/basvi-chunara/Airbnb_Global_Performance_Dashboard",
@@ -46,34 +44,31 @@ const PROJECTS = [
     href: "https://github.com/basvi-chunara",
   },
   {
-    title: "SQL Layoffs Data Cleaning",
+    title: "SQL Data Cleaning Project",
     tag: "MySQL · ETL",
     bullets: [
-      "Messy public layoffs dataset, not usable for analysis as-is.",
-      "Wrote MySQL pipelines to deduplicate, normalize formats and fix nulls across thousands of rows.",
-      "Produced an analysis-ready dataset and reusable SQL patterns for future cleaning work.",
+      "Transformed a messy public layoffs dataset into an analysis-ready format using MySQL pipelines to deduplicate 1000+ rows, normalize date and salary formats, and resolve null values across 10+ columns.",
+      "Created reusable SQL patterns using CTEs, window functions, and CASE logic while documenting the complete cleaning workflow for future reproducibility.",
     ],
     stack: ["MySQL", "SQL", "ETL"],
     href: "https://github.com/basvi-chunara",
   },
   {
-    title: "Full-Stack Web Application",
+    title: "Full-Stack Event Management Web Application",
     tag: "JavaScript · PostgreSQL",
     bullets: [
-      "Practiced end-to-end client–server thinking with real persistence.",
-      "Built REST endpoints over PostgreSQL, validated with Postman, deployed on Heroku.",
-      "Working HTTP/JSON app — solid base for future data-driven web tools.",
+      "Designed and implemented 8 RESTful API endpoints supporting client-server communication using HTTP, JSON, and request-response protocols. Developed the application using HTML, CSS, JavaScript, Node.js/Express, PostgreSQL, and deployed it on Heroku.",
+      "Tested all API endpoints using Postman, resolved bugs through root cause analysis, and actively participated in Agile ceremonies including sprint planning, retrospectives, and code reviews.",
     ],
     stack: ["JavaScript", "PostgreSQL", "REST", "Heroku"],
     href: "https://github.com/basvi-chunara",
   },
   {
-    title: "Android Event Management App",
+    title: "Android Event Management App | Team Project",
     tag: "Java · Firestore",
     bullets: [
-      "Event organizers needed a simple way to manage entrants, posters and waiting lists.",
-      "Shipped poster updates, waiting-list flows and a Maps view plotting entrants in real time, backed by Firestore.",
-      "Complete agile-built Android app delivered through review-driven sprints.",
+      "Implemented three major Java features including event poster updates, waiting-list views, and map visualization using Firebase, image validation, UI updates, and sorting logic.",
+      "Integrated the Google Maps API to visualize entrant locations and collaborated using GitHub branching, pull requests, and code reviews within an Agile team.",
     ],
     stack: ["Java", "Android", "Firestore", "Google Maps API"],
     href: "https://github.com/basvi-chunara",
@@ -86,8 +81,8 @@ const EXPERIENCE = [
     org: "Code Ninjas",
     period: "Oct 2025 — Present",
     points: [
-      "Teach JavaScript through projects and small games.",
-      "Help young learners debug and think step by step.",
+      "Instruct foundational and advanced programming (JavaScript) to students aged 5–15 through games and interactive projects, building real-world application development skills.",
+      "Guide students through structured debugging, algorithmic thinking, and problem decomposition while adapting instruction for different learning styles.",
     ],
   },
   {
@@ -95,8 +90,8 @@ const EXPERIENCE = [
     org: "Orfe EcoArt Program",
     period: "Aug 2025 — Present",
     points: [
-      "Built KPI dashboards in MySQL, Power BI, Sheets and Python.",
-      "Ran simple statistical checks on participation data to guide outreach.",
+      "Unifying 500+ records across 153 schools, 112 instructors, and 162 partners into a unified database; building an AI-assisted query system to enable the founder to generate impact reports in seconds instead of 2+ hours manually.",
+      "Designing a data governance framework including a 5-table schema, auto-increment IDs, dropdown controls, and engagement tracking to support real-time decision-making for a social-impact organization.",
     ],
   },
   {
@@ -104,8 +99,8 @@ const EXPERIENCE = [
     org: "Vosyn",
     period: "May 2025 — Aug 2025",
     points: [
-      "Analyzed engagement data in Google Analytics to inform campaigns.",
-      "Presented competitor and market insights to stakeholders.",
+      "Analyzed user behaviour and engagement data using Excel to support data-driven marketing decisions.",
+      "Presented campaign performance insights and trend analysis to stakeholders, translating complex data into actionable recommendations. Conducted competitor and market analysis to contribute to the company's Go-To-Market strategy.",
     ],
   },
   {
@@ -115,15 +110,6 @@ const EXPERIENCE = [
     points: [
       "Co-led bimonthly community events for Toronto interns.",
       "Planned inclusive, budget-conscious meetups for 10+ members.",
-    ],
-  },
-  {
-    role: "Quality Control Volunteer",
-    org: "NAT — Network for Applied Technology",
-    period: "Oct 2024 — Mar 2026",
-    points: [
-      "Resolved quality issues and supported continuous improvement workflows.",
-      "Worked with hardware teams on troubleshooting and coordination.",
     ],
   },
   {
@@ -156,6 +142,13 @@ const SKILLS = [
       "Microsoft Office 365", "PowerPoint Presentations", "Postman",
     ],
   },
+  {
+    group: "Software Engineering",
+    items: [
+      "Node.js", "RESTful APIs", "Firebase", "HTML", "CSS",
+      "Android Studio (Java)", "Google Maps API", "UI Implementation", "Heroku",
+    ],
+  },
 ];
 
 const COURSES = [
@@ -173,13 +166,22 @@ const AWARDS = [
   "International Admission Scholarship",
 ];
 
-const CERTIFICATIONS = [
-  "Deloitte Data Analytics",
-  "Tata Data Visualization: Empowering Business with Effective Insights",
-  "Prediction & Control with Function Approximation (Reinforcement Learning)",
+const CERTIFICATIONS: { name: string; href: string }[] = [
+  {
+    name: "Deloitte Data Analytics",
+    href: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_k4rZF3QaxYFyh7ndH_1752456242102_completion_certificate.pdf",
+  },
+  {
+    name: "Tata Data Visualization: Empowering Business with Effective Insights",
+    href: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_k4rZF3QaxYFyh7ndH_1735863115097_completion_certificate.pdf",
+  },
+  {
+    name: "Prediction & Control with Function Approximation (Reinforcement Learning)",
+    href: "https://www.coursera.org/account/accomplishments/verify/89035C60FQHP",
+  },
 ];
 
-const SECTIONS = ["home", "about", "education", "projects", "experience", "skills", "interests", "contact"];
+const SECTIONS = ["home", "about", "skills", "education", "projects", "experience", "interests", "contact"];
 
 const Portfolio = () => {
   const [active, setActive] = useState("home");
