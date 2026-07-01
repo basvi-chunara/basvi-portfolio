@@ -344,8 +344,27 @@ const Portfolio = () => {
         </section>
 
         {/* EDUCATION */}
-        <section id="education" className="py-20 scroll-mt-20">
+        {/* SKILLS */}
+        <section id="skills" className="py-20 scroll-mt-20">
+          <SectionTitle eyebrow="Tools" title="Tools I work with." />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {SKILLS.map((s) => (
+              <div key={s.group} className="glass rounded-2xl p-6 shadow-card">
+                <h3 className="font-display text-base text-foreground mb-4">{s.group}</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {s.items.map((it) => (
+                    <span key={it} className="text-xs px-2.5 py-1 rounded-md bg-foreground/10 text-foreground/85 border border-foreground/15">
+                      {it}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
+        {/* EDUCATION */}
+        <section id="education" className="py-20 scroll-mt-20">
           <SectionTitle eyebrow="Education" title="Where I'm learning." />
           <div className="glass rounded-2xl p-7 shadow-card">
             <div className="flex flex-wrap items-start justify-between gap-3">
