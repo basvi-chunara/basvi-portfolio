@@ -502,25 +502,6 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* SKILLS */}
-        <section id="skills" className="py-20 scroll-mt-20">
-          <SectionTitle eyebrow="Skills" title="Tools I work with." />
-          <div className="grid md:grid-cols-3 gap-5">
-            {SKILLS.map((s) => (
-              <div key={s.group} className="glass rounded-2xl p-6 shadow-card">
-                <h3 className="font-display text-base text-foreground mb-4">{s.group}</h3>
-                <div className="flex flex-wrap gap-1.5">
-                  {s.items.map((it) => (
-                    <span key={it} className="text-xs px-2.5 py-1 rounded-md bg-foreground/10 text-foreground/85 border border-foreground/15">
-                      {it}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* INTERESTS */}
         <section id="interests" className="py-20 scroll-mt-20">
           <SectionTitle eyebrow="Interests" title="Off the clock." />
