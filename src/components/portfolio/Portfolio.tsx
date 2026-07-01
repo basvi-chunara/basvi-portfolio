@@ -345,6 +345,7 @@ const Portfolio = () => {
 
         {/* EDUCATION */}
         <section id="education" className="py-20 scroll-mt-20">
+
           <SectionTitle eyebrow="Education" title="Where I'm learning." />
           <div className="glass rounded-2xl p-7 shadow-card">
             <div className="flex flex-wrap items-start justify-between gap-3">
