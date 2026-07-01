@@ -5,10 +5,10 @@ interface Props { active: string; }
 const ITEMS = [
   { id: "home", label: "Home", Icon: Home },
   { id: "about", label: "About", Icon: User },
+  { id: "skills", label: "Tools", Icon: Wrench },
   { id: "education", label: "Education", Icon: GraduationCap },
   { id: "projects", label: "Projects", Icon: FolderGit2 },
   { id: "experience", label: "Experience", Icon: Briefcase },
-  { id: "skills", label: "Skills", Icon: Wrench },
   { id: "interests", label: "Interests", Icon: Heart },
   { id: "contact", label: "Contact", Icon: Mail },
 ];
