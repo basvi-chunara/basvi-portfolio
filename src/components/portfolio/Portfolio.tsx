@@ -318,13 +318,8 @@ const Portfolio = () => {
               <div>
                 <p className="text-foreground/85 leading-relaxed">
                   I'm a fourth-year Computing Science student at the University of Alberta who
-                  likes working with data — cleaning it, asking questions of it, and turning the
+                  likes working with data: cleaning it, asking questions of it, and turning the
                   answers into something a person can actually use.
-                </p>
-                <p className="mt-4 text-foreground/85 leading-relaxed">
-                  Most of what I do is practical: SQL pipelines, dashboards, small analyses, and
-                  the occasional full-stack tool to put a result in front of someone. I learn by
-                  building, and I like problems where the data isn't tidy yet.
                 </p>
               </div>
               <div className="justify-self-center md:justify-self-end">
@@ -394,8 +389,16 @@ const Portfolio = () => {
               </p>
               <ul className="space-y-1.5 text-sm text-foreground/85">
                 {CERTIFICATIONS.map((c) => (
-                  <li key={c} className="flex gap-2">
-                    <span className="text-firefly mt-1.5">·</span><span>{c}</span>
+                  <li key={c.name} className="flex gap-2">
+                    <span className="text-firefly mt-1.5">·</span>
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline underline-offset-2 hover:text-firefly transition-soft"
+                    >
+                      {c.name}
+                    </a>
                   </li>
                 ))}
               </ul>
