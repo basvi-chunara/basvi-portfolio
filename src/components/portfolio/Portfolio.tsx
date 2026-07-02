@@ -6,6 +6,12 @@ import {
 import { Button } from "@/components/ui/button";
 import rainyBg from "@/assets/rainy-stop.jpg";
 import basviPhoto from "@/assets/basvi.jpg.asset.json";
+import bankingImg from "@/assets/projects/banking_dashboard.png.asset.json";
+import airbnbImg from "@/assets/projects/airbnb_dashboard.png.asset.json";
+import tableauImg from "@/assets/projects/tableau_dashboard.png.asset.json";
+import sqlImg from "@/assets/projects/sql_dataset.png.asset.json";
+import webAppImg from "@/assets/projects/web_app.png.asset.json";
+import eventAppImg from "@/assets/projects/event_app.png.asset.json";
 import SideNav from "./SideNav";
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
@@ -15,9 +21,11 @@ const PROJECTS = [
   {
     title: "Retail Banking Dashboard",
     tag: "Power BI · DAX · Python",
+    image: bankingImg.url,
     bullets: [
-      "Designed a 4-page interactive Power BI dashboard analyzing 50K+ customer records to uncover loan exposure, deposit behaviour, credit balances, and risk segmentation patterns. Performed end-to-end data analysis using Python (Pandas, Seaborn) to clean financial datasets and conduct exploratory data analysis.",
-      "Developed 8+ DAX measures for KPIs (total loan, deposits, credit card balance, business lending). Implemented cross-page navigation and drill-down capabilities, translating complex financial data into clear, actionable insights for non-technical stakeholders.",
+      "Cleaned and explored retail banking data using Python (Pandas) before building interactive Power BI dashboards.",
+      "Created DAX measures and KPI dashboards to analyze loans, deposits, credit cards, and customer segments.",
+      "Used interactive filters and drill-downs to make financial insights easy to explore.",
     ],
     stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
     href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
@@ -25,9 +33,11 @@ const PROJECTS = [
   {
     title: "Airbnb Global Performance Dashboard",
     tag: "Power BI · DAX · MySQL",
+    image: airbnbImg.url,
     bullets: [
-      "Built a multi-page Power BI dashboard analyzing Airbnb market performance across 33+ data attributes and global cities, monitoring MySQL source tables with data validation checks to ensure reporting accuracy. Developed KPI visuals identifying pricing inefficiencies, host trust patterns, and customer satisfaction trends across markets.",
-      "Synthesized dashboard findings into 5 actionable business recommendations covering host trust scoring, dynamic pricing strategy, cleanliness improvement programs, and seasonal demand forecasting.",
+      "Built an interactive Power BI dashboard to analyze Airbnb performance across multiple cities.",
+      "Used MySQL to prepare and validate data before creating KPI reports and visualizations.",
+      "Identified trends in pricing, host performance, and customer satisfaction to support business decisions.",
     ],
     stack: ["Power BI", "DAX", "MySQL", "KPI Reporting"],
     href: "https://github.com/basvi-chunara/Airbnb_Global_Performance_Dashboard",
@@ -35,10 +45,11 @@ const PROJECTS = [
   {
     title: "Business Insights with Tableau",
     tag: "Tableau · Data Cleaning",
+    image: tableauImg.url,
     bullets: [
-      "Four global factories, scattered telemetry, no clear answer to 'where are we losing the most?'",
-      "Cleaned and joined production data, then built interactive dashboards comparing sites and pay equity.",
-      "Identified Seiko as the highest-failure site and surfaced pay-gap patterns leadership could act on.",
+      "Cleaned and combined manufacturing data from multiple global factories.",
+      "Built interactive Tableau dashboards to compare production performance and pay equity.",
+      "Identified the highest-failure factory and highlighted trends to support business decisions.",
     ],
     stack: ["Tableau", "JSON", "Data Cleaning"],
     href: "https://github.com/basvi-chunara",
@@ -46,9 +57,11 @@ const PROJECTS = [
   {
     title: "SQL Data Cleaning Project",
     tag: "MySQL · ETL",
+    image: sqlImg.url,
     bullets: [
-      "Transformed a messy public layoffs dataset into an analysis-ready format using MySQL pipelines to deduplicate 1000+ rows, normalize date and salary formats, and resolve null values across 10+ columns.",
-      "Created reusable SQL patterns using CTEs, window functions, and CASE logic while documenting the complete cleaning workflow for future reproducibility.",
+      "Cleaned and transformed a public layoffs dataset using MySQL.",
+      "Removed duplicates, handled missing values, and standardized data formats for analysis.",
+      "Used SQL features such as CTEs, window functions, and CASE statements to build reusable cleaning workflows.",
     ],
     stack: ["MySQL", "SQL", "ETL"],
     href: "https://github.com/basvi-chunara",
@@ -56,9 +69,11 @@ const PROJECTS = [
   {
     title: "Full-Stack Event Management Web Application",
     tag: "JavaScript · PostgreSQL",
+    image: webAppImg.url,
     bullets: [
-      "Designed and implemented 8 RESTful API endpoints supporting client-server communication using HTTP, JSON, and request-response protocols. Developed the application using HTML, CSS, JavaScript, Node.js/Express, PostgreSQL, and deployed it on Heroku.",
-      "Tested all API endpoints using Postman, resolved bugs through root cause analysis, and actively participated in Agile ceremonies including sprint planning, retrospectives, and code reviews.",
+      "Built a full-stack event management application using JavaScript, HTML, CSS, and PostgreSQL.",
+      "Developed REST APIs to manage event data and tested them using Postman.",
+      "Collaborated in an Agile team using GitHub while deploying the application to Heroku.",
     ],
     stack: ["JavaScript", "PostgreSQL", "REST", "Heroku"],
     href: "https://github.com/basvi-chunara",
@@ -66,9 +81,11 @@ const PROJECTS = [
   {
     title: "Android Event Management App | Team Project",
     tag: "Java · Firestore",
+    image: eventAppImg.url,
     bullets: [
-      "Implemented three major Java features including event poster updates, waiting-list views, and map visualization using Firebase, image validation, UI updates, and sorting logic.",
-      "Integrated the Google Maps API to visualize entrant locations and collaborated using GitHub branching, pull requests, and code reviews within an Agile team.",
+      "Developed Android app features using Java and Firebase Firestore.",
+      "Integrated Google Maps to display event participant locations.",
+      "Collaborated with teammates using GitHub, pull requests, and Agile development practices.",
     ],
     stack: ["Java", "Android", "Firestore", "Google Maps API"],
     href: "https://github.com/basvi-chunara",
@@ -81,8 +98,9 @@ const EXPERIENCE = [
     org: "Code Ninjas",
     period: "Oct 2025 — Present",
     points: [
-      "Instruct foundational and advanced programming (JavaScript) to students aged 5–15 through games and interactive projects, building real-world application development skills.",
-      "Guide students through structured debugging, algorithmic thinking, and problem decomposition while adapting instruction for different learning styles.",
+      "Teaching JavaScript programming to students aged 5–15 through games and interactive coding projects.",
+      "Guiding students through debugging, problem-solving, and algorithmic thinking in a step-by-step way.",
+      "Adapting lessons based on different learning styles to make coding concepts easier to understand.",
     ],
   },
   {
@@ -90,8 +108,9 @@ const EXPERIENCE = [
     org: "Orfe EcoArt Program",
     period: "Aug 2025 — Present",
     points: [
-      "Unifying 500+ records across 153 schools, 112 instructors, and 162 partners into a unified database; building an AI-assisted query system to enable the founder to generate impact reports in seconds instead of 2+ hours manually.",
-      "Designing a data governance framework including a 5-table schema, auto-increment IDs, dropdown controls, and engagement tracking to support real-time decision-making for a social-impact organization.",
+      "Building a centralized data management system using Google Sheets to organize 500+ records across schools, instructors, and partners.",
+      "Developing an AI-assisted query system using Gemini to generate impact reports in seconds instead of hours.",
+      "Designing a structured data governance framework with engagement tracking to improve reporting and decision-making.",
     ],
   },
   {
@@ -99,8 +118,9 @@ const EXPERIENCE = [
     org: "Vosyn",
     period: "May 2025 — Aug 2025",
     points: [
-      "Analyzed user behaviour and engagement data using Excel to support data-driven marketing decisions.",
-      "Presented campaign performance insights and trend analysis to stakeholders, translating complex data into actionable recommendations. Conducted competitor and market analysis to contribute to the company's Go-To-Market strategy.",
+      "Analyzed marketing and user engagement data using Excel to identify trends and campaign performance.",
+      "Created reports and presented insights to support data-driven marketing decisions.",
+      "Conducted competitor and market research to contribute to the company's go-to-market strategy.",
     ],
   },
   {
@@ -117,8 +137,9 @@ const EXPERIENCE = [
     org: "FastHire",
     period: "Jul 2024 — Aug 2024",
     points: [
-      "Optimized multi-source SQL pipelines to speed up reporting.",
-      "Performed validation and quality checks across business datasets.",
+      "Cleaned and validated structured and semi-structured datasets using SQL, improving data quality by handling missing values, duplicates, and inconsistencies.",
+      "Organized datasets to support downstream analysis, reporting tasks, and exploratory data analysis.",
+      "Performed data quality checks to ensure consistency, accuracy, and reliability of datasets used for evaluation.",
     ],
   },
 ];
@@ -169,11 +190,11 @@ const AWARDS = [
 const CERTIFICATIONS: { name: string; href: string }[] = [
   {
     name: "Deloitte Data Analytics",
-    href: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_k4rZF3QaxYFyh7ndH_1752456242102_completion_certificate.pdf",
+    href: "https://drive.google.com/file/d/1X5RsxIe826S8TA1DcCPP1yNUIcGldfM8/view?usp=sharing",
   },
   {
     name: "Tata Data Visualization: Empowering Business with Effective Insights",
-    href: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_k4rZF3QaxYFyh7ndH_1735863115097_completion_certificate.pdf",
+    href: "https://drive.google.com/file/d/1Ex9zCrPnzkHt4D6DIVj9co5bh8dorJFi/view?usp=sharing",
   },
   {
     name: "Prediction & Control with Function Approximation (Reinforcement Learning)",
@@ -414,7 +435,7 @@ const Portfolio = () => {
                     <a
                       href={c.href}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="underline underline-offset-2 hover:text-firefly transition-soft"
                     >
                       {c.name}
@@ -439,6 +460,14 @@ const Portfolio = () => {
                 key={p.title}
                 className="glass rounded-2xl p-6 shadow-card hover:-translate-y-0.5 transition-soft flex flex-col"
               >
+                <div className="mb-4 rounded-xl overflow-hidden border border-foreground/15 bg-foreground/5 aspect-[16/9]">
+                  <img
+                    src={p.image}
+                    alt={`${p.title} preview`}
+                    loading="lazy"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <p className="text-[10px] uppercase tracking-[0.22em] text-firefly mb-2">{p.tag}</p>
                 <h3 className="font-display text-lg text-foreground mb-3">{p.title}</h3>
                 <ul className="space-y-2 text-sm text-foreground/80 flex-1">
@@ -456,7 +485,7 @@ const Portfolio = () => {
                   ))}
                 </div>
                 <div className="mt-4">
-                  <a href={p.href} target="_blank" rel="noreferrer">
+                  <a href={p.href} target="_blank" rel="noopener noreferrer">
                     <Button size="sm" variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                       <Github className="w-3.5 h-3.5 mr-1.5" /> View on GitHub
                     </Button>
@@ -508,7 +537,7 @@ const Portfolio = () => {
           <div className="grid sm:grid-cols-3 gap-5">
             {[
               { Icon: BookOpen, label: "Reading" },
-              { Icon: Mountain, label: "Mountains" },
+              { Icon: Mountain, label: "Travelling" },
               { Icon: Users, label: "Teaching" },
             ].map(({ Icon, label }) => (
               <div
@@ -542,12 +571,12 @@ const Portfolio = () => {
                   <Mail className="w-4 h-4 mr-2" /> Email
                 </Button>
               </a>
-              <a href="https://www.linkedin.com/in/basvichunara/" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/basvichunara/" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
                 </Button>
               </a>
-              <a href="https://github.com/basvi-chunara" target="_blank" rel="noreferrer">
+              <a href="https://github.com/basvi-chunara" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Github className="w-4 h-4 mr-2" /> GitHub
                 </Button>
