@@ -571,19 +571,15 @@ const Portfolio = () => {
                   <Mail className="w-4 h-4 mr-2" /> Email
                 </Button>
               </a>
-              <Button
-                asChild
-                variant="outline"
-                className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground relative z-10"
+              <a
+                href="https://www.linkedin.com/in/basvichunara/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a
-                  href="https://www.linkedin.com/in/basvichunara/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
-                </a>
-              </Button>
+                </Button>
+              </a>
               <a href="https://github.com/basvi-chunara" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Github className="w-4 h-4 mr-2" /> GitHub
