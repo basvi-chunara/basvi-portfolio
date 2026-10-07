@@ -1,4 +1,6 @@
-import { Home, User, GraduationCap, FolderGit2, Briefcase, Wrench, Heart, Mail } from "lucide-react";
+import { useState } from "react";
+import { Home, User, GraduationCap, FolderGit2, Briefcase, Wrench, Heart, Mail, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Props { active: string; }
 
@@ -13,10 +15,25 @@ const ITEMS = [
   { id: "contact", label: "Contact", Icon: Mail },
 ];
 
-const SideNav = ({ active }: Props) => (
+const SideNav = ({ active }: Props) => {
+  const [open, setOpen] = useState(false);
+  return (
+  <>
+  <Button
+    variant="ghost"
+    size="icon"
+    className="fixed left-3 top-5 z-50 md:hidden glass rounded-xl text-foreground hover:bg-foreground/10 hover:text-foreground"
+    aria-label={open ? "Close navigation" : "Open navigation"}
+    aria-expanded={open}
+    aria-controls="section-navigation"
+    onClick={() => setOpen((value) => !value)}
+  >
+    {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+  </Button>
   <nav
+    id="section-navigation"
     aria-label="Section navigation"
-    className="fixed left-3 md:left-5 top-1/2 -translate-y-1/2 z-40"
+    className={`fixed left-3 md:left-5 top-1/2 -translate-y-1/2 z-40 ${open ? "block" : "hidden md:block"}`}
   >
     <ul className="glass rounded-2xl p-1.5 flex flex-col gap-1 shadow-card">
       {ITEMS.map(({ id, label, Icon }) => {
@@ -25,6 +42,7 @@ const SideNav = ({ active }: Props) => (
           <li key={id}>
             <a
               href={`#${id}`}
+              onClick={() => setOpen(false)}
               className={`group relative flex items-center justify-center w-10 h-10 rounded-xl transition-soft ${
                 isActive
                   ? "bg-firefly text-rain-deep shadow-soft"
@@ -43,6 +61,8 @@ const SideNav = ({ active }: Props) => (
       })}
     </ul>
   </nav>
-);
+  </>
+  );
+};
 
 export default SideNav;
