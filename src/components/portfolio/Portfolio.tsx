@@ -78,6 +78,9 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
     stack: ["JavaScript", "PostgreSQL", "REST", "Heroku"],
     href: "https://drive.google.com/drive/folders/1-5gUHhFiBdi8W5LhOtInvp86rJhcWw6Q?usp=sharing",
     cta: "Glimpses of the App",
+  },
+  {
+    title: "Android Event Management App",
     tag: "Java · Firestore",
     image: eventAppImg.url,
     bullets: [
