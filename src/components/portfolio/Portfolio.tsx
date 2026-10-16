@@ -23,9 +23,9 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
     tag: "Power BI · DAX · Python",
     image: bankingImg.url,
     bullets: [
-      "Cleaned and explored retail banking data using Python (Pandas) before building interactive Power BI dashboards.",
-      "Created DAX measures and KPI dashboards to analyze loans, deposits, credit cards, and customer segments.",
-      "Used interactive filters and drill-downs to make financial insights easy to explore.",
+      "Designed and developed a **4-page interactive Power BI dashboard** analyzing **3,000 customer records** across loan exposure, deposit behaviour, credit balances, and customer risk segments.",
+      "Built an **end-to-end analytics workflow** using **Python (Pandas, Seaborn)** to clean financial data, conduct EDA, and identify customer trends; developed **DAX measures** for financial KPIs including total loan, deposits, credit card balance, and business lending; implemented cross-page navigation and interactive reporting features.",
+      "Created a **production-style analytics dashboard** that transformed raw financial data into clear KPI insights, demonstrating end-to-end BI workflow from data preparation to visualization and business recommendations.",
     ],
     stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
     href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
@@ -93,13 +93,11 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   },
 ];
 
-const EXPERIENCE: { role: string; org: string; period: string; team?: string; context?: string; current?: boolean; visible: boolean; points: string[]; tools?: string[] }[] = [
+const EXPERIENCE: { role: string; org: string; period: string; current?: boolean; visible: boolean; points: string[]; tools?: string[] }[] = [
   {
     role: "Database Analyst and Administration Intern",
     org: "City of Edmonton",
     period: "September 2026 – Present",
-    team: "Open City and Technology · Database Management Services",
-    context: "Database Administration · SQL · Python · Enterprise IT",
     current: true,
     visible: true,
     points: [
@@ -397,22 +395,16 @@ const Portfolio = () => {
                         </div>
                         <h3 className="font-display text-lg text-foreground">{e.role}</h3>
                         <p className={`text-sm mb-3 ${e.current ? "text-firefly font-medium" : "text-foreground/65"}`}>{e.org}</p>
-                        {e.team && <p className="text-xs text-foreground/65 mb-2">{e.team}</p>}
-                        {e.context && <p className="text-xs text-foreground/65 mb-3">{e.context}</p>}
+                        {e.tools && e.tools.length > 0 && (
+                          <p className="text-[10px] uppercase tracking-[0.22em] text-firefly mb-2">
+                            {e.tools.join(" · ")}
+                          </p>
+                        )}
                         <ul className="space-y-1.5 text-sm text-foreground/85">
                           {e.points.map((pt) => (
                             <li key={pt} className="flex gap-2"><span className="text-firefly mt-1.5">·</span><span>{pt}</span></li>
                           ))}
                         </ul>
-                        {e.tools && e.tools.length > 0 && (
-                          <div className="mt-3 flex flex-wrap gap-1.5">
-                            {e.tools.map((t) => (
-                              <span key={t} className="text-[11px] px-2 py-0.5 rounded-md bg-foreground/10 text-foreground/75 border border-foreground/15">
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     </div>
                   </li>
@@ -466,7 +458,7 @@ const Portfolio = () => {
                 <ul className="space-y-2 text-sm text-foreground/80 flex-1">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
-                      <span className="text-firefly mt-1.5 shrink-0">·</span><span>{b}</span>
+                      <span className="text-firefly mt-1.5 shrink-0">·</span><span>{renderRich(b)}</span>
                     </li>
                   ))}
                 </ul>
