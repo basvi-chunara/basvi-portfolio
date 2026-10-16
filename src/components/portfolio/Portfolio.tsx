@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   Github, Linkedin, Mail, Download,
-  GraduationCap, Briefcase, BookOpen, Mountain, Users, Award, BadgeCheck,
+  GraduationCap, Briefcase, BookOpen, Mountain, Users, Award, BadgeCheck, ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import rainyBg from "@/assets/rainy-stop.jpg";
@@ -17,7 +17,7 @@ import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
 import Fireflies from "./Fireflies";
 
-const PROJECTS = [
+const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; stack: string[]; href: string; cta?: string }[] = [
   {
     title: "Retail Banking Dashboard",
     tag: "Power BI · DAX · Python",
@@ -35,9 +35,9 @@ const PROJECTS = [
     tag: "Power BI · DAX · MySQL",
     image: airbnbImg.url,
     bullets: [
-      "Built an interactive Power BI dashboard to analyze Airbnb performance across multiple cities.",
-      "Used MySQL to prepare and validate data before creating KPI reports and visualizations.",
-      "Identified trends in pricing, host performance, and customer satisfaction to support business decisions.",
+      "Developed a 3-page interactive Power BI report analyzing Airbnb listing inventory, host quality, guest ratings, and review behaviour across global cities using two CSV data sources.",
+      "Built KPI cards, DAX-based measures, and interactive visualizations to compare listing growth, pricing, guest ratings, host verification, and monthly review trends across cities.",
+      "Translated dashboard findings into 5 actionable business recommendations covering host trust, pricing strategy, cleanliness improvement, and seasonal demand patterns, demonstrating end-to-end data storytelling for non-technical stakeholders.",
     ],
     stack: ["Power BI", "DAX", "MySQL", "KPI Reporting"],
     href: "https://github.com/basvi-chunara/Airbnb_Global_Performance_Dashboard",
@@ -76,7 +76,8 @@ const PROJECTS = [
       "Collaborated in an Agile team using GitHub while deploying the application to Heroku.",
     ],
     stack: ["JavaScript", "PostgreSQL", "REST", "Heroku"],
-    href: "https://github.com/basvi-chunara",
+    href: "https://drive.google.com/drive/folders/1-5gUHhFiBdi8W5LhOtInvp86rJhcWw6Q?usp=sharing",
+    cta: "Glimpses of the App",
   },
   {
     title: "Android Event Management App",
@@ -92,22 +93,21 @@ const PROJECTS = [
   },
 ];
 
-const EXPERIENCE = [
+const EXPERIENCE: { role: string; org: string; period: string; team?: string; context?: string; current?: boolean; visible: boolean; points: string[]; tools?: string[] }[] = [
   {
     role: "Database Analyst and Administration Intern",
     org: "City of Edmonton",
-    period: "Sep 2026 – Present",
+    period: "September 2026 – Present",
     team: "Open City and Technology · Database Management Services",
     context: "Database Administration · SQL · Python · Enterprise IT",
     current: true,
     visible: true,
     points: [
       "Supporting day-to-day database administration activities across the City's SQL Server and Oracle database environments.",
-      "Assisting with the configuration, maintenance, monitoring, and troubleshooting of corporate database systems.",
-      "Using SQL and Python to query, structure, and analyze technical datasets.",
-      "Producing and updating technical, procedural, and operational documentation for Database Management Services.",
+      "Using SQL and Python to query, structure, and analyze technical datasets, and Power BI to create visualizations that help the team monitor operational performance.",
       "Supporting database infrastructure projects through requirements analysis, attention to detail, and collaboration with project teams.",
     ],
+    tools: ["SQL", "DAX", "Power BI"],
   },
   {
     role: "Coding Instructor",
@@ -129,6 +129,7 @@ const EXPERIENCE = [
       "Built a centralized data management structure using Google Sheets to organize 500+ records across schools, instructors, and partners.",
       "Designed structured tables and data organization workflows to make data management more consistent.",
     ],
+    tools: ["Google Sheets", "Data Management"],
   },
   {
     role: "Digital Marketing Analyst Intern",
@@ -140,6 +141,7 @@ const EXPERIENCE = [
       "Created reports and presented insights to support data-driven marketing decisions.",
       "Conducted competitor and market research to contribute to the company's go-to-market strategy.",
     ],
+    tools: ["Excel", "GTM strategy"],
   },
   {
     role: "Summer Tech Hub Leader",
@@ -161,6 +163,7 @@ const EXPERIENCE = [
       "Organized datasets to support downstream analysis, reporting tasks, and exploratory data analysis.",
       "Performed data quality checks to improve the consistency, accuracy, and reliability of datasets used for evaluation.",
     ],
+    tools: ["SQL", "Power BI"],
   },
 ];
 
@@ -171,7 +174,7 @@ const SKILLS = [
   },
   {
     group: "Databases & Analytics",
-    items: ["MySQL", "PostgreSQL", "SQLite", "BigQuery", "Power BI", "Tableau", "DAX", "Excel"],
+    items: ["MySQL", "Power BI", "Tableau", "DAX", "Excel", "SQLite", "BigQuery", "SSRS (SQL Server Reporting Services)", "Google Sheets"],
   },
   {
     group: "Development & Platforms",
@@ -179,16 +182,16 @@ const SKILLS = [
   },
   {
     group: "Productivity",
-    items: ["Microsoft Office 365", "Google Workspace", "PowerPoint"],
+    items: ["Microsoft Office 365", "Google Workspace"],
   },
 ];
 
 const COURSES = [
+  "Database Management",
   "Software Engineering",
-  "Web Development",
+  "Modern Web Architecture",
   "Machine Learning",
   "Applied Statistics",
-  "Database Management",
   "Digital Image Processing",
   "Reinforcement Learning",
 ];
@@ -401,6 +404,15 @@ const Portfolio = () => {
                             <li key={pt} className="flex gap-2"><span className="text-firefly mt-1.5">·</span><span>{pt}</span></li>
                           ))}
                         </ul>
+                        {e.tools && e.tools.length > 0 && (
+                          <div className="mt-3 flex flex-wrap gap-1.5">
+                            {e.tools.map((t) => (
+                              <span key={t} className="text-[11px] px-2 py-0.5 rounded-md bg-foreground/10 text-foreground/75 border border-foreground/15">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </li>
@@ -434,7 +446,6 @@ const Portfolio = () => {
           <SectionTitle
             eyebrow="Projects"
             title="Things I've built."
-            subtitle="Each one started with a real question and ended with something usable."
           />
           <div className="grid md:grid-cols-2 gap-5">
             {PROJECTS.map((p) => (
@@ -469,7 +480,7 @@ const Portfolio = () => {
                 <div className="mt-4">
                   <a href={p.href} target="_blank" rel="noopener noreferrer">
                     <Button size="sm" variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
-                      <Github className="w-3.5 h-3.5 mr-1.5" /> View on GitHub
+                      {p.cta ? <ExternalLink className="w-3.5 h-3.5 mr-1.5" /> : <Github className="w-3.5 h-3.5 mr-1.5" />} {p.cta ?? "View on GitHub"}
                     </Button>
                   </a>
                 </div>
@@ -490,7 +501,7 @@ const Portfolio = () => {
                 <p className="text-foreground/65 text-sm mt-1">BSc, Computing Science · Edmonton, AB</p>
               </div>
               <span className="text-xs px-3 py-1 rounded-full bg-foreground/10 text-foreground/80 whitespace-nowrap">
-                Sep 2023 — Jun 2027
+                Sep 2023 — Jun 2028
               </span>
             </div>
 
