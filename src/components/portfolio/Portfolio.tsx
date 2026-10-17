@@ -14,14 +14,6 @@ import webAppImg from "@/assets/projects/web_app.png.asset.json";
 import eventAppImg from "@/assets/projects/event_app.png.asset.json";
 import SideNav from "./SideNav";
 
-const renderRich = (text: string) =>
-  text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
-    part.startsWith("**") && part.endsWith("**") ? (
-      <strong key={i} className="font-semibold text-foreground">{part.slice(2, -2)}</strong>
-    ) : (
-      part
-    ),
-  );
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
 import Fireflies from "./Fireflies";
@@ -32,9 +24,9 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
     tag: "Power BI · DAX · Python",
     image: bankingImg.url,
     bullets: [
-      "Designed and developed a **4-page interactive Power BI dashboard** analyzing **3,000 customer records** across loan exposure, deposit behaviour, credit balances, and customer risk segments.",
-      "Built an **end-to-end analytics workflow** using **Python (Pandas, Seaborn)** to clean financial data, conduct EDA, and identify customer trends; developed **DAX measures** for financial KPIs including total loan, deposits, credit card balance, and business lending; implemented cross-page navigation and interactive reporting features.",
-      "Created a **production-style analytics dashboard** that transformed raw financial data into clear KPI insights, demonstrating end-to-end BI workflow from data preparation to visualization and business recommendations.",
+      "Designed and developed a 4-page interactive Power BI dashboard analyzing 3,000 customer records across loan exposure, deposit behaviour, credit balances, and customer risk segments.",
+      "Built an end-to-end analytics workflow using Python (Pandas, Seaborn) to clean financial data, conduct EDA, and identify customer trends; developed DAX measures for financial KPIs including total loan, deposits, credit card balance, and business lending; implemented cross-page navigation and interactive reporting features.",
+      "Created a production-style analytics dashboard that transformed raw financial data into clear KPI insights, demonstrating end-to-end BI workflow from data preparation to visualization and business recommendations.",
     ],
     stack: ["Power BI", "DAX", "Python", "Pandas", "Seaborn"],
     href: "https://github.com/basvi-chunara/Retail-Banking-Analytics",
@@ -467,7 +459,7 @@ const Portfolio = () => {
                 <ul className="space-y-2 text-sm text-foreground/80 flex-1">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
-                      <span className="text-firefly mt-1.5 shrink-0">·</span><span>{renderRich(b)}</span>
+                      <span className="text-firefly mt-1.5 shrink-0">·</span><span>{b}</span>
                     </li>
                   ))}
                 </ul>
