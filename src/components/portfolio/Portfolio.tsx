@@ -13,6 +13,15 @@ import sqlImg from "@/assets/projects/sql_dataset.png.asset.json";
 import webAppImg from "@/assets/projects/web_app.png.asset.json";
 import eventAppImg from "@/assets/projects/event_app.png.asset.json";
 import SideNav from "./SideNav";
+
+const renderRich = (text: string) =>
+  text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i} className="font-semibold text-foreground">{part.slice(2, -2)}</strong>
+    ) : (
+      part
+    ),
+  );
 import SectionTitle from "./SectionTitle";
 import Rain from "./Rain";
 import Fireflies from "./Fireflies";
