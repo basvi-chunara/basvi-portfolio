@@ -4,6 +4,8 @@ import {
   GraduationCap, Briefcase, BookOpen, Mountain, Users, Award, BadgeCheck, ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getPortfolioImageUrl } from "@/lib/assets";
+import { getAppBasename } from "@/lib/routing";
 import rainyBg from "@/assets/rainy-stop.jpg";
 import basviPhoto from "@/assets/basvi.jpg.asset.json";
 import bankingImg from "@/assets/projects/banking_dashboard.png.asset.json";
@@ -22,7 +24,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "Retail Banking Dashboard",
     tag: "Power BI · DAX · Python",
-    image: bankingImg.url,
+    image: getPortfolioImageUrl(bankingImg),
     bullets: [
       "Designed and developed a 4-page interactive Power BI dashboard analyzing 3,000 customer records across loan exposure, deposit behaviour, credit balances, and customer risk segments.",
       "Built an end-to-end analytics workflow using Python (Pandas, Seaborn) to clean financial data, conduct EDA, and identify customer trends; developed DAX measures for financial KPIs including total loan, deposits, credit card balance, and business lending; implemented cross-page navigation and interactive reporting features.",
@@ -34,7 +36,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "Airbnb Global Performance Dashboard",
     tag: "Power BI · DAX · MySQL",
-    image: airbnbImg.url,
+    image: getPortfolioImageUrl(airbnbImg),
     bullets: [
       "Developed a 3-page interactive Power BI report analyzing Airbnb listing inventory, host quality, guest ratings, and review behaviour across global cities using two CSV data sources.",
       "Built KPI cards, DAX-based measures, and interactive visualizations to compare listing growth, pricing, guest ratings, host verification, and monthly review trends across cities.",
@@ -46,7 +48,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "SQL Data Cleaning Project",
     tag: "MySQL · ETL",
-    image: sqlImg.url,
+    image: getPortfolioImageUrl(sqlImg),
     bullets: [
       "Cleaned and transformed a public layoffs dataset using MySQL.",
       "Removed duplicates, handled missing values, and standardized data formats for analysis.",
@@ -58,7 +60,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "Business Insights with Tableau",
     tag: "Tableau · Data Cleaning",
-    image: tableauImg.url,
+    image: getPortfolioImageUrl(tableauImg),
     bullets: [
       "Cleaned and combined manufacturing data from multiple global factories.",
       "Built interactive Tableau dashboards to compare production performance and pay equity.",
@@ -70,7 +72,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "Full-Stack Event Management Web Application",
     tag: "JavaScript · PostgreSQL",
-    image: webAppImg.url,
+    image: getPortfolioImageUrl(webAppImg),
     bullets: [
       "Built a full-stack event management application using JavaScript, HTML, CSS, and PostgreSQL.",
       "Developed REST APIs to manage event data and tested them using Postman.",
@@ -83,7 +85,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
   {
     title: "Android Event Management App",
     tag: "Java · Firestore",
-    image: eventAppImg.url,
+    image: getPortfolioImageUrl(eventAppImg),
     bullets: [
       "Developed Android app features using Java and Firebase Firestore.",
       "Integrated Google Maps to display event participant locations.",
@@ -356,7 +358,7 @@ const Portfolio = () => {
               </div>
               <div className="justify-self-center md:justify-self-end">
                 <img
-                  src={basviPhoto.url}
+                  src={getPortfolioImageUrl(basviPhoto)}
                   alt="Portrait of Basvi Chunara"
                   loading="lazy"
                   className="w-44 h-44 md:w-56 md:h-56 rounded-2xl object-cover shadow-card border border-foreground/15"
@@ -599,7 +601,7 @@ const Portfolio = () => {
                   <Github className="w-4 h-4 mr-2" /> GitHub
                 </Button>
               </a>
-              <a href="/resume.pdf" download>
+              <a href={`${getAppBasename(window.location.pathname, import.meta.env.BASE_URL).replace(/\/$/, "")}/resume.pdf`} download>
                 <Button variant="outline" className="rounded-full bg-transparent border-foreground/25 text-foreground hover:bg-foreground/10 hover:text-foreground">
                   <Download className="w-4 h-4 mr-2" /> Resume
                 </Button>
