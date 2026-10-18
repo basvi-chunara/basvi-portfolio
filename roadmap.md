@@ -5,4 +5,4 @@
 
 # GitHub Pages homepage fix
 - [x] Make React Router recognize the repository prefix without breaking root previews.
-- [ ] Verify homepage routes and CSS, JavaScript, and image loading.
+- [x] Verify homepage routes and CSS, JavaScript, and image loading locally; six regression tests pass. Updated GitHub deployment still requires the next Actions run.
