@@ -55,7 +55,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
       "Used SQL features such as CTEs, window functions, and CASE statements to build reusable cleaning workflows.",
     ],
     stack: ["MySQL", "SQL", "ETL"],
-    href: "https://github.com/basvi-chunara",
+    href: "https://github.com/basvi-chunara/SQL-Project-Data-Cleaning",
   },
   {
     title: "Business Insights with Tableau",
@@ -67,7 +67,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
       "Identified the highest-failure factory and highlighted trends to support business decisions.",
     ],
     stack: ["Tableau", "JSON", "Data Cleaning"],
-    href: "https://github.com/basvi-chunara",
+    href: "https://github.com/basvi-chunara/Business-Insights-with-Tableau",
   },
   {
     title: "Full-Stack Event Management Web Application",
@@ -92,7 +92,7 @@ const PROJECTS: { title: string; tag: string; image: string; bullets: string[]; 
       "Collaborated with teammates using GitHub, pull requests, and Agile development practices.",
     ],
     stack: ["Java", "Android", "Firestore", "Google Maps API"],
-    href: "https://github.com/basvi-chunara",
+    href: "https://github.com/basvi-chunara/Event-Management-App",
   },
 ];
 
